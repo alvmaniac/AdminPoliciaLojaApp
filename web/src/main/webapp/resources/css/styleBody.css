@@ -1,0 +1,409 @@
+@charset "utf-8";
+/************************************
+*\pages\templates\common
+**************************************/
+.body_container {
+    color: #000000;
+    background: #ffffff;
+    display:flex;
+    width: 100%; 
+    flex: 1;
+}
+
+.body_container::before{
+    content: "";
+    display:flex;
+    background: #ffffff;
+    width: 10%;
+    float:left; 
+}
+
+.body_container::after{
+    content: "";
+    display:flex;
+    background: #ffffff;
+    width: 10%;
+    float:left; 
+}
+
+.body_subcontainer {
+    color: #000000;
+    background: #ffffff;
+    width: 80%;
+}
+.body_nav {
+    background: #ffffff;
+    width: 100%;
+}
+
+.body_center {
+	background: #ffffff;
+    width: 100%;
+    height: 100%;
+    text-align: center; 
+} 
+
+.body_bottom {
+	color: #000000;
+    width: 100%;
+}  
+
+/************************************
+*\pages\home
+**************************************/
+.changeColorCategHome{
+	background-image:transparent !important;
+	position: relative; 
+	text-align: left; 
+	width:100%;
+}
+
+.switchCategHome{
+	width:100% !important;
+	height: 250px !important;
+}
+
+.linkCategHome{
+	background-color: transparent !important;
+	width:100% !important;
+}
+
+.imagCategHome{
+	width: 100% !important;
+	height: 250px !important;
+	object-fit: fill;
+	object-position: center center;
+	
+}
+
+.textCategHome{
+	color: #ffffff;
+	font-size: 18pt;
+	font-family: cursive;
+	position: absolute;
+	top: 27%;
+	right: 10%; 
+	z-index: 2000;
+}
+
+.buttonCategHome{
+	color: #ffffff;
+	position: absolute;
+	top: 40%;
+	right: 10%; 
+	z-index: 2000;
+	background:  #3d3d3d;
+	border: none;
+	height: 35px;
+	width: 100px;
+	cursor: pointer
+}
+
+.buttonCategHome:hover{
+	box-shadow: 0 0 8px 0 #85b2cb;
+}
+
+.linkPrevCategHome{
+	position: absolute;
+	top: 30%;
+	left: 1%; 
+	z-index: 100;
+}
+
+.linkNextCategHome{
+	position: absolute;
+	top: 30%; 
+	right: 1%; 
+	z-index: 10;
+}
+
+.caruselStyle{
+	width: 100%;
+}
+
+.caruselItemStyle{
+	text-align:center;
+}
+
+.linkImagenesCat {
+	text-decoration: none;
+	border-style: none;
+	border: 0;
+	width:100%;
+	height: 160px;
+	object-fit: contain;
+    object-position: center center;
+}
+
+#listForm\:noved_content{
+	border: none !important;
+}
+
+.vermasStyle{
+	padding-left: 6px;
+	color: #c40;
+	text-decoration: underline;
+	font-size: 1rem;
+}
+
+.promoLabelStyle{
+	text-align: left;
+	color:#3d3d3d;
+	font-size: 1.15rem;
+	padding-left: 10px;
+}
+
+
+.divProdPromo{
+	border: solid 1px #eee; 
+	text-align: center; 
+	padding: 8px
+}
+
+/************************************
+*\pages\catalogo\catalogoProdList
+**************************************/
+.divProd_container{
+	color: #000000;
+    background: #ffffff;
+    display:flex;
+    width: 100%;
+}
+
+.divProd_fillter{
+	width: 20%;
+	padding: 20px;
+	text-align: left;
+}
+
+.divProd_DataView{
+	width: 80%;
+	padding: 20px;
+}
+
+.divProd_fillterMobil{
+	display: none !important;
+}
+
+.linkImagenesProd{
+	text-decoration: none;
+	border-style: none;
+	border: 0;
+	width:100%; 
+	height:200px;
+	object-fit: contain;
+    object-position: center center;
+}
+
+.buttonBlue{
+	color: #ffffff;
+	background:  #3d3d3d;
+	border: none;
+	height: 35px;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+/************************************
+*\pages\catalogo\catalogoProd
+**************************************/
+.catalogoGalery{
+	width: 400px !important;
+	height: 313px !important;
+}
+
+.catalogoGalery ul{
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.catalogoGalery ul li{
+	width: 100% !important;
+	height: 100% !important;
+}
+.imagenGalery{
+	text-decoration: none;
+	border-style: none;
+	border: 0;
+	width:100%; 
+	height:100%;
+	object-fit: contain;
+    object-position: center center;
+}
+
+/************************************
+*\pages\catalogo\catalogoFact
+**************************************/
+#tablaTotales{
+	border-collapse: collapse;
+	width: 21.8%;
+	background: #c4c4c4 -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0.8)),to(rgba(255,255,255,0)));
+}
+
+#tablaTotales  tr td {
+	border: 1px solid #c4c4c4;
+	border-top: none;
+  	text-align: right;
+  	padding: 4px 10px;    
+}
+.columnDelete{
+	text-align: center;
+	width: 5%;
+}
+.columnCod{
+	width: 5%;
+}
+
+.columnProd{
+	width: 60%;
+}
+
+.columnCant{
+	text-align: right;
+	width: 5%;
+}
+
+.columnDescPor{
+	text-align: right;
+	width: 15%;
+}
+
+.columnDesc{
+	text-align: right;
+	width: 10%;
+}
+
+.columnPrecioU{
+	text-align: right;
+	width: 10%;
+}
+.columnPrecio{
+	text-align: right;
+	width: 10%;
+}
+
+/************************************
+*\pages\cliente\clienteDetalle
+**************************************/
+.bg-aqua{
+	background-color: #00c0ef !important;
+	color: #fff !important;
+}
+
+.bq-green{
+	background-color: #00a65a !important;
+	color: #fff !important;
+}
+
+.bq-orange{
+	background-color: #f39c12 !important;
+	color: #fff !important;
+}
+
+.bq-blank{
+	background-color: #ffffff !important;
+	color: #000000 !important;
+}
+
+.bq-red{
+	background-color: #dd4b39 !important;
+	color: #fff !important;
+}
+
+.inner{
+    padding: 10px;
+    width: 70%;
+    text-align: left;
+}
+
+.iconUser {
+    -webkit-transition: all .3s linear;
+	-o-transition: all .3s linear;
+	transition: all .3s linear;
+	position: absolute;
+	top: -10px;
+	right: 10px;
+	z-index: 0;
+	font-size: 90px;
+	color: rgba(0,0,0,0.15);
+}
+
+.small-box-footer{
+	position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+
+.small-box {
+    border-radius: 2px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+
+
+/************************************
+*\pages\ecommerce\catalogo\catalogoFact
+**************************************/
+
+
+/************************************
+*\info\nosotros
+**************************************/
+.logoStyle {
+    width: 100px;
+    height: 125px;
+    object-fit: contain;
+    object-position: center center;
+}
+
+/************************************
+*\aut\registro
+**************************************/
+.centraVertical{
+	width: 100%;
+	height: 100%;
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+.gridLogin{
+	width: 25%;
+	margin: 0 auto; 
+	border: 1px solid #c4c4c4; 
+	padding: 10px; 
+	text-align:left;
+}
+.gridForm{
+	width: 50%;
+	margin: 0 auto; 
+	border: 1px solid #c4c4c4; 
+	padding: 10px; 
+	text-align:left;
+}
+
+.ui-md-2 {
+    width: 13%;
+}
+
+.ui-md-4 {
+    width: 37%;
+}
+
+#formProd\:prods_content{
+	border: none !important;
+}

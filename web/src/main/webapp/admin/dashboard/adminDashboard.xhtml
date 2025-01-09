@@ -1,0 +1,102 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions" >
+	
+		<h:form style="background: #ecf0f5;">
+			<div class="ui-g">
+			    <div class="ui-g-12 ui-md-10 ui-g-nopad">
+			        <div class="ui-g-12 ui-g-nopad">
+			            <div class="ui-g">
+			                <div class="ui-g-12 ui-md-3">
+			                	<div class="bg-aqua small-box">
+			                		<div style="display: flex; width: 100%; padding: 15px;">
+			                			<div class="inner">
+							              <h3>60</h3>
+							              <p>Usuarios</p>
+							            </div>
+			                			<div class="iconUser">
+			                				<i class="fa fa-shopping-bag" aria-hidden="true"></i>
+							            </div>
+			                		</div>
+						            <a href="" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a>
+					            </div>
+		                	</div>
+			                <div class="ui-g-12 ui-md-3">
+			                	<div class="bq-green small-box">
+			                		<div style="display: flex; width: 100%; padding: 15px;">
+			                			<div class="inner">
+							              <h3>50</h3>
+							              <p>Personal Policial</p>
+							            </div>
+			                			<div class="iconUser">
+			                				<i class="fa fa-shopping-cart"></i>
+							            </div>
+			                		</div>
+			                			<a href="" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a>
+					            </div>
+			                </div>
+			                <div class="ui-g-12 ui-md-3">
+			                	<div class="bq-red small-box">
+			                		<div style="display: flex; width: 100%; padding: 15px;">
+			                			<div class="inner">
+							              <h3>200</h3>
+							              <p>Mantenimientos</p>
+							            </div>
+			                			<div class="iconUser">
+			                				<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+							            </div>
+			                		</div>
+						            <a href="" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a>
+					            </div>
+			                </div>
+			                <div class="ui-g-12 ui-md-3">
+			                	<div class="bq-orange small-box">
+			                		<div style="display: flex; width: 100%; padding: 15px;">
+			                			<div class="inner">
+							              <h3>150</h3>
+							              <p>Dependencias</p>
+							            </div>
+			                			<div class="iconUser">
+			                				<i class="fa fa-truck" aria-hidden="true"></i>
+							            </div>
+			                		</div>
+						            <a href="" class="small-box-footer">Más <i class="fa fa-arrow-circle-right"></i></a>
+					            </div>
+			                </div>
+			            </div>
+			            
+			             <div class="ui-g">
+			                <div class="ui-g-12 ui-md-6">
+			                	 <div id="chartLinediv" style="width: 100%; height: 300px; background: #ffffff;"/>
+			                </div>  
+			                <div class="ui-g-12 ui-md-6">
+			                	 <div id="chartPiediv" style="width: 100%; height: 300px; background: #ffffff;"/>
+			                	 <SCRIPT type="text/javascript">
+			                		cargaPieChart('/resources/service/#{user.id}');
+			                	 </SCRIPT>
+			                </div> 
+			            </div>
+			            
+			             <div class="ui-g">
+			                <div class="ui-g-12 ui-md-6">
+								<div class="bq-blank">
+		                			
+						            <a href="" class="small-box-footer">Editar <i class="fa fa-arrow-circle-right"></i></a>
+					            </div>
+							</div>
+			                <div class="ui-g-12 ui-md-6"><div id="chartdiv" style="width: 100%; height: 385px; background: #ffffff;"></div></div>
+			            </div>
+			             
+			           
+			           
+			        </div>
+			    </div>
+			    <div class="ui-g-12">
+			        Footer
+			    </div>
+			 </div>
+		</h:form>
+	
+</ui:composition>

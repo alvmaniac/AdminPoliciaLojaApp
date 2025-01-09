@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+		<p:menuitem value="Inicio" outcome="/admin/adminHome?faces-redirect=true" rendered="#{!empty user.nombreapellido}" />
+	    <p:submenu label="Usuarios" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
+			<p:menuitem value="Usuarios" outcome="/admin/usuario/usuarioList" />
+			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
+		</p:submenu>
+		<p:submenu label="Personal Policial" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
+			<p:menuitem value="Personal Policial" outcome="/admin/usuario/usuarioList" />
+			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
+		</p:submenu>
+		<p:submenu label="Dependencias" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
+			<p:menuitem value="Dependencias" outcome="/admin/usuario/usuarioList" />
+			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
+		</p:submenu>
+		<p:submenu label="Flota Vehicular" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
+			<p:menuitem value="Flota Vehicular" outcome="/admin/usuario/usuarioList" />
+			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
+		</p:submenu>
+		<p:submenu label="Mantenimientos" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
+			<p:menuitem value="Mantenimientos" outcome="/admin/usuario/usuarioList" />
+			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
+		</p:submenu>
+		<p:submenu label="Ordenes de Movilización" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
+			<p:menuitem value="Ordenes de Movilización" outcome="/admin/usuario/usuarioList" />
+			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
+		</p:submenu>
+		<p:submenu label="Reportes" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
+			<p:menuitem value="Reportes" outcome="/admin/usuario/usuarioList" />
+			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
+		</p:submenu>
+</ui:composition>

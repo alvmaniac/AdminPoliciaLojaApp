@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/template.xhtml">
+		<ui:define name="pageTitle">INICIO</ui:define>
+		<ui:define name="body">
+            <h:form id="Login" style="height:100%">
+              	 <div class="centraVertical">
+					<div class="gridLogin" >
+						<p:messages globalOnly="true"> <p:autoUpdate /> </p:messages>
+						<div style="text-align:center; width:100%; font-size: 14pt; font-weight: bold; color: #febd69;">Ingresar</div>
+						 <br />
+						<div class="ui-inputgroup">
+				            <span class="ui-inputgroup-addon"><i class="fa fa-envelope"></i></span>
+				            <p:inputText placeholder="email" id="Email" value="#{loginBean.mail}" required="true" styleClass="campoLogin" maxlength="60" validatorMessage="Email Invalido">
+								<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+							</p:inputText>      
+				        </div>
+				        <br />
+						<div class="ui-inputgroup">
+				            <span class="ui-inputgroup-addon"><i class="fa fa-key fa-fw"></i></span>
+				            <p:password placeholder="clave" id="Clave" value="#{loginBean.contrasenia}" required="true" styleClass="campoLogin" maxlength="15" />      
+				        </div>
+						<br />
+						<h:commandButton action="#{loginBean.login}" value="Ingresar" styleClass="buttonBlue" style="width:100%;"/>
+						<br />
+						<br />
+						<h:link value="Olvido su clave?" outcome="/aut/olvido?faces-redirect=true" immediate="true" class="linkOrange"/>
+						<br />
+					 </div>
+				</div>
+			 </h:form>
+		</ui:define>	
+	</ui:composition>
+</html>

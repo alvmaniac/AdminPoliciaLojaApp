@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
+	
+	<ui:composition template="/template.xhtml">
+			<ui:define name="pageTitle">CLAVE</ui:define>
+			<ui:define name="body">				
+				<h:form id="Login" style="height:100%">
+					<div class="centraVertical" >
+						 <h:panelGrid id="Grid1"  columns="1" styleClass="gridLogin" >
+						 	<p:messages> <p:autoUpdate /> </p:messages>
+							<div style="text-align:center; width:100%; font-size: 14pt; font-weight: bold; color: #febd69;">Cambio de Clave</div>
+							<h:panelGrid columns="1" rendered="#{!loginBean.recuperaClave}" width="100%" >
+								<o:validateEqual id="equal" components="itContrasenia itRepetirCont" message="Clave Incorrecta"/>
+								<p:outputLabel for="itContrasenia" value="Clave:" styleClass="etiqueta" />
+								<p:password id="itContrasenia" value="#{loginBean.contrasenia}" feedback="true" style="width:97%; height:25px;"
+									required="true" styleClass="campo" maxlength="15"  />
+								<p:outputLabel for="itRepetirCont" value="Repetir Clave:" styleClass="etiqueta"/>
+								<p:password id="itRepetirCont" style="width:97%; height:25px;"
+									required="true" styleClass="campo" maxlength="15" >
+								</p:password>								
+								<p:commandButton action="#{loginBean.cambioClave}" value="Continuar" styleClass="buttonBlue" style="width:100%;" update="Grid1"/>
+						 	</h:panelGrid>
+						 	<h:panelGrid columns="1" rendered="#{loginBean.recuperaClave}" width="100%">
+								<h:outputLabel value="Se cambio exitosamente la clave de su cuenta : #{fn:substringBefore(loginBean.mail,'@')}XXXXXX" styleClass="etiqueta"/>
+								<h:button outcome="/inicio" value="Ingresar" styleClass="buttonBlue" style="width:100%;" immediate="true"/>
+							</h:panelGrid>
+						 </h:panelGrid>	
+				 	</div>
+				</h:form>			
+			</ui:define>	
+		</ui:composition>
+</html>

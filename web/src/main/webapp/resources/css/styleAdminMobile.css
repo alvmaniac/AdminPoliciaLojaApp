@@ -1,0 +1,183 @@
+@charset "ISO-8859-1";
+
+    .horizontalmenu {
+        display: none !important;
+    }
+    .menuFont{
+    	font-size: 0.8em;
+	}
+	 #tablaTotales{
+		border-collapse: collapse;
+		width: 100%;
+		background: #c4c4c4 -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0.8)),to(rgba(255,255,255,0)));
+	}
+	#tablaTotales  tr td {
+		border: 1px solid #ffffff;
+		border-top: none;
+	  	text-align: right;
+	  	padding-right: 10px;    
+	}
+
+	.columnDelete{
+	}
+	.columnCod{
+	}
+	
+	.columnProd{
+	}
+	
+	.columnCant{
+		display: flex !important;
+	}
+	
+	th[role="columnheader"]{
+		display: none !important;
+	}
+	.columnDescPor{
+	}
+	
+	.columnDesc{
+	}
+	
+	.columnPrecioU{
+	}
+	.columnPrecio{
+	}
+	
+	#pgridF > .ui-g-12{
+		padding: 0px;
+	}
+
+	.bars {
+	background-image: url("#{resource['imagenes/bars-black.png']}") !important; 
+	}
+
+/************************************
+*dashboard
+**************************************/
+.bg-aqua{
+	background-color: #00c0ef !important;
+	color: #fff !important;
+}
+
+.bq-green{
+	background-color: #00a65a !important;
+	color: #fff !important;
+}
+
+.bq-orange{
+	background-color: #f39c12 !important;
+	color: #fff !important;
+}
+
+.bq-blank{
+	background-color: #ffffff !important;
+	color: #000000 !important;
+}
+
+.bq-red{
+	background-color: #dd4b39 !important;
+	color: #fff !important;
+}
+
+.inner{
+    padding: 10px;
+    width: 70%;
+    text-align: left;
+}
+
+.iconUser {
+    -webkit-transition: all .3s linear;
+	-o-transition: all .3s linear;
+	transition: all .3s linear;
+	position: absolute;
+	top: -10px;
+	right: 10px;
+	z-index: 0;
+	font-size: 90px;
+	color: rgba(0,0,0,0.15);
+}
+
+.small-box-footer{
+	position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+
+.small-box {
+    border-radius: 2px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+
+
+/************************************
+*Diario
+**************************************/
+ #tablaTotalesDiario{
+		border-collapse: collapse;
+		width: 100%;
+		background: #c4c4c4 -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0.8)),to(rgba(255,255,255,0)));
+}
+
+#tablaTotalesDiario  tr td {
+	border: 1px solid #ffffff;
+	border-top: none;
+  	text-align: right;
+  	padding-right: 10px;    
+}
+
+.columnAccion {
+	width: 5%;
+}
+.columnCodigo {
+	width: 10%;
+}
+.columnFecha {
+	width: 10%;
+}
+.columnCodCuenta {
+	width: 5%;
+}
+.columnCuenta {
+	width: 20%;
+}
+.columnConcepto {
+	width: 20%;
+}
+.columnDocumento {
+	width: 10%;
+}
+.columnDebe {
+	text-align: right;
+	width: 10%;
+}
+.columnHaber {
+	text-align: right;
+	width: 10%;
+}
+.ui-g-12 {
+    padding: 0px;
+}
+
+.logoStyle {
+    width: 100px;
+    height: 150px;
+    object-fit: contain;
+    object-position: center center;
+}

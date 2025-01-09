@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">  		
+		
+		<h:head>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+			<meta name="apple-mobile-web-app-capable" content="yes"/>
+			<link rel="shortcut icon" type="image/x-icon" href="#{resource['imagenes/admin/favicon.ico']}"/>
+			<title>ADMIN</title>	
+			<h:outputStylesheet name="css/style.css" />
+			<link type="text/css" rel="stylesheet" media="screen and (min-width: 1000px)" href="#{facesContext.externalContext.requestContextPath}/javax.faces.resource/css/styleAdmin.css.jsf" />
+			<link type="text/css" rel="stylesheet" media="screen and (max-width: 1000px)" href="#{facesContext.externalContext.requestContextPath}/javax.faces.resource/css/styleAdminMobile.css.jsf" />
+			<link type="text/css" rel="stylesheet" media="screen and (min-width: 1000px)" href="#{facesContext.externalContext.requestContextPath}/javax.faces.resource/css/styleBody.css.jsf" />
+			<link type="text/css" rel="stylesheet" media="screen and (max-width: 1000px)" href="#{facesContext.externalContext.requestContextPath}/javax.faces.resource/css/styleBodyMobile.css.jsf" />
+			<h:outputScript library="js" name="common.js" />
+			<ui:insert name="meta"></ui:insert>
+			<!-- <f:loadBundle  basename="properties.example_messages"  var="example_messages"/> -->
+		</h:head>
+		
+		<h:body bgcolor="#ffffff" >
+			<!-- <f:view locale ="#{i18nBean.locale}"> -->
+			<f:view >
+				<div style="overflow-x:auto;" class="ui-fluid">
+					<table style="border:1px solid #CAD6E0"  align="center" cellpadding="0" cellspacing="0" border="0"  width="100%" class="menuFont">
+						<tbody>
+							<tr>
+								<td width="100%" >
+									<h:form id="formSuc">
+										<p:toolbar height="26" itemSeparator="grid" id="menuFormMobil">
+									      	<p:toolbarGroup styleClass="verticalmenu" rendered="#{!empty user.nombreapellido}"> 
+									   		 	<p:commandButton id="dynaButton"  type="button" icon="bars" disabled="#{empty user.nombreapellido}"/>
+											    <p:slideMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="width:180px" backLabel="Regresar">
+											        <ui:include src="/admin/adminMenu.xhtml" />
+											    </p:slideMenu>
+										   	</p:toolbarGroup>
+										   	<p:toolbarGroup align="Center">
+						            			<div style="display: flex;width: 100%;">
+							            			<div style="width: 100%;text-align: right;" >
+											    		<h:graphicImage library="imagenes" name="PoliciaNacional.png" styleClass="logoStyle"/>
+											    	</div>
+							            			<div style="width: 100%;text-align: left;" >
+							            				<table>
+								            				 <tr>
+								            				 	<td>
+								            				 		<h3 style="text-align: center;">Gestión Vehicular</h3>
+																	<p style="text-align: center;">Subzona Loja</p>
+								            				 	</td>
+															 </tr>
+							            				</table>
+											    	</div>
+											    </div>
+									      	</p:toolbarGroup>
+									    </p:toolbar>
+									    <p:toolbar height="26" >
+											<p:toolbarGroup align="right">
+												<h:outputText value="#{adminBean.usuario.nombreapellido} |"/>
+								      			<p:link outcome="/admin/adminHome?faces-redirect=true" value="Inicio" immediate="true" ajax="false" rendered="#{!empty user.nombreapellido}"/>
+								      			<p:link outcome="/inicio?faces-redirect=true" value="Login" immediate="true" ajax="false" rendered="#{empty user.nombreapellido}"/>
+								      		</p:toolbarGroup>
+										</p:toolbar>
+								    </h:form>
+								</td>
+							</tr>	
+							<tr>
+								<td width="100%"  colspan="2">
+									<p:panel id="pMenu" >
+										<table width="100%" style="height:500px" cellpadding="0" cellspacing="0" border="0" >
+											<tbody>
+												<tr>
+													<td style="padding-right: 5px" valign="top">
+														<h:form id="menuForm">
+														    <p:menu toggleable="true" styleClass="horizontalmenu" rendered="#{!empty user.nombreapellido}" >
+														        <ui:include src="/admin/adminMenu.xhtml" />
+														    </p:menu>
+													    </h:form>
+													</td>
+													<td align="center" valign="top" width="100%">
+														<ui:insert name="body" >Page Body</ui:insert>
+														<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+														<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
+														    <i class="fa fa-spinner fa-spin fa-2x fa-fw" style="background-color: transparent;"></i>
+														</p:dialog>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</p:panel>
+								</td>
+							</tr>
+							<tr>
+								<td width="100%" >
+									<h:form>
+										<p:toolbar height="26" >
+											<p:toolbarGroup align="right">
+												<h:outputText value="#{adminBean.usuario.nombreapellido} |"/>
+								          		 <h:commandLink action="#{adminBean.cerrarSesion}"  value="Logout" immediate="true" rendered="#{!empty user.nombreapellido}"/>
+								      		</p:toolbarGroup>
+										</p:toolbar>
+									</h:form>
+								</td>
+							</tr>	
+						</tbody>
+					</table>
+				</div>	
+			</f:view>
+		</h:body>
+		
+</html>

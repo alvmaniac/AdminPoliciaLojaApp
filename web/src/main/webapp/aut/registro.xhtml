@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="pageTitle">REGISTRO</ui:define>
+	<ui:define name="body">
+		<h:form id="Cliente" style="height:auto">
+			<p:spacer height="10"/>
+			<p:messages > <p:autoUpdate /> </p:messages>
+			<div class="centraVertical" style="height:100%" >
+				 <h:panelGrid id="Grid1"  columns="1" styleClass="gridLogin" >
+					<div style="text-align:center; width:100%; font-size: 14pt; font-weight: bold; color: #febd69;">Creación de Cuenta</div>
+					<o:validateEqual id="equal" components="Clave RepetirClave" message="#{example_messages.verificar_password}"/>
+					<h:panelGrid columns="1" rendered="#{!cuentaBean.usuarioCreado}" width="100%" >
+						
+						<p:outputLabel for="itTipoDoc" value="Tipo Identidad:" styleClass="etiqueta"/>
+						<p:selectOneMenu id="itTipoDoc" value="#{cuentaBean.usuario.usuTipoDoc}"  required="true" style="width: 92%" >
+	                    	<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true" />
+							<f:selectItem itemLabel="Cedula" itemValue="1" />
+							<f:selectItem itemLabel="Ruc" itemValue="2" />	
+							<f:selectItem itemLabel="Pasaporte" itemValue="3" />						        
+						</p:selectOneMenu>	
+						
+						<p:outputLabel for="CI" value="Num Identidad:" styleClass="etiqueta"/>
+						<p:inputText id="CI" value="#{cuentaBean.usuario.usuNumDoc}" 
+							required="true" styleClass="campoLogin" maxlength="13">
+							<f:validator validatorId="UnitIdentificacionValidator" />
+						</p:inputText>
+						
+						<p:outputLabel for="Nombre" value="Nombre:" styleClass="etiqueta"/>
+						<p:inputText id="Nombre" value="#{cuentaBean.usuario.usuNombre}"
+							required="true" styleClass="campoLogin" maxlength="50" />
+						
+						<p:outputLabel for="Apellido" value="Apellido:" styleClass="etiqueta"/>
+						<p:inputText id="Apellido" value="#{cuentaBean.usuario.usuApellido}"
+							required="true" styleClass="campoLogin" maxlength="50" />
+						
+						<p:outputLabel for="Email" value="E-mail:" styleClass="etiqueta"/>
+						<p:inputText id="Email" value="#{cuentaBean.usuario.usuMail}" 
+							required="true" styleClass="campoLogin" maxlength="60">
+							<f:validator validatorId="ExpRegMailValidator" />
+							<f:validator validatorId="UnitMailValidator" />
+						</p:inputText>
+					
+						<p:outputLabel for="Clave" value="Clave:" styleClass="etiqueta" />
+						<p:password id="Clave" value="#{cuentaBean.usuario.usuContrasena}" feedback="true"
+							required="true" styleClass="campoLogin" maxlength="15"  />
+	
+						<p:outputLabel for="RepetirClave" value="Repetir Clave:" styleClass="etiqueta" />
+						<p:password id="RepetirClave" 
+							required="true" styleClass="campoLogin" maxlength="15" >
+						</p:password>
+						
+						<p:outputLabel for="Celular" value="Celular" styleClass="etiqueta"/>
+						<p:inputText id="Celular" value="#{cuentaBean.usuario.usuCelular}"
+						required="true" styleClass="campoLogin" maxlength="15"  />
+						
+						<p:outputLabel for="Telefono" value="Teléfono:" styleClass="etiqueta"/>
+						<p:inputText id="Telefono" value="#{cuentaBean.usuario.usuTelefono}"
+						required="false" styleClass="campoLogin" maxlength="15" />
+				 	</h:panelGrid>
+				 	<h:panelGrid columns="2" rendered="#{!cuentaBean.usuarioCreado}" width="100%" columnClasses="ui-g-12 ui-md-6,ui-g-12 ui-md-6">
+				 		<p:commandButton value="Guardar" styleClass="buttonBlue" action="#{cuentaBean.ingresa}" update="Grid1" style="width:100%;"/>
+						<p:button value="Cancelar" styleClass="buttonBlue" outcome="/inicio?faces-redirect=true" style="width:100%;"/>
+				 	</h:panelGrid>
+				 	<h:panelGrid columns="1" rendered="#{cuentaBean.usuarioCreado}" width="100%">
+						<h:outputLabel value="Se creo exitosamente la cuenta : #{cuentaBean.usuario.usuMail}" styleClass="etiqueta"/>
+						<p:button outcome="/aut/login?faces-redirect=true" value="Ingresar" styleClass="buttonBlue" style="width:100%;"/>
+					</h:panelGrid>
+				 </h:panelGrid>
+		 	</div>
+		 	<p:spacer height="10"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

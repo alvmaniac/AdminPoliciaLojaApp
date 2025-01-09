@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jstl/core">
+
+   		<ui:composition template="/template.xhtml">
+			<ui:define name="meta">
+		    	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+				<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+				<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+				<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+				<script src="https://www.amcharts.com/lib/4/plugins/timeline.js"></script>
+				<script src="https://www.amcharts.com/lib/4/plugins/bullets.js"></script>
+				
+				<h:outputScript library="js" name="visitorMap.js" />
+				<h:outputScript library="js" name="chartLine.js" />
+				<h:outputScript library="js" name="chartPie.js" />
+				<h:outputScript library="js" name="chartTimeLine.js" />
+		    </ui:define>
+			<ui:define name="body">
+				<h:messages showSummary="true" showDetail="false" style="color: red; font-weight: bold;" for="name" />
+					 <div>
+					 		<ui:include src="/admin/dashboard/adminDashboard.xhtml"/>
+					 </div>
+				 
+			</ui:define>
+		</ui:composition>
+</html>

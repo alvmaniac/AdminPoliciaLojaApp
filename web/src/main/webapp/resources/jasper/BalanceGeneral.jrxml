@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BalanceGeneral" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="dc487077-9a17-4a7d-9f38-b0c72b9a1a6c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQLShopping"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="diaFecha" class="java.util.Date">
+		<fieldDescription><![CDATA[diaFecha]]></fieldDescription>
+	</field>
+	<field name="diaDebe" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[diaDebe]]></fieldDescription>
+	</field>
+	<field name="diaHaber" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[diaHaber]]></fieldDescription>
+	</field>
+	<field name="diaCod" class="java.lang.Long">
+		<fieldDescription><![CDATA[diaCod]]></fieldDescription>
+	</field>
+	<field name="planCuenta" class="com.shopping.app.entity.PlanCuenta">
+		<fieldDescription><![CDATA[planCuenta]]></fieldDescription>
+	</field>
+	<field name="asiento" class="com.shopping.app.entity.Asiento">
+		<fieldDescription><![CDATA[asiento]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="diaDocumento" class="java.lang.String">
+		<fieldDescription><![CDATA[diaDocumento]]></fieldDescription>
+	</field>
+	<field name="diaConcepto" class="java.lang.String">
+		<fieldDescription><![CDATA[diaConcepto]]></fieldDescription>
+	</field>
+	<field name="diaEstado" class="java.lang.String">
+		<fieldDescription><![CDATA[diaEstado]]></fieldDescription>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{planCuenta}.getGrupoCuenta().getGrcNombre()]]></groupExpression>
+		<groupHeader>
+			<band height="19"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="55"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="36" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="261" y="0" width="100" height="30" uuid="81d42be9-5746-4376-bf56-9ccf75c0ddcb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1fd50769-d3ea-402f-ac07-a343b7997052"/>
+				</reportElement>
+				<text><![CDATA[diaDocumento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="473" y="0" width="100" height="30" uuid="4f0afa28-4082-409a-a0c9-ebf35ecd9a0d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bdc2352-8354-4a71-8231-86c465349131"/>
+				</reportElement>
+				<text><![CDATA[asiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="0" width="100" height="30" uuid="4dba5d04-1c81-4ff3-8ab6-7f8261110064">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cb217f1e-a490-4289-83bf-ce29c20d23e3"/>
+				</reportElement>
+				<text><![CDATA[Cuenta]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="261" y="0" width="100" height="20" uuid="45db9477-f065-41f7-82e9-5d760f38eb75">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1fd50769-d3ea-402f-ac07-a343b7997052"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{diaDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="0" width="100" height="20" uuid="c4924a80-2866-445f-b863-880d8f56b988">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bdc2352-8354-4a71-8231-86c465349131"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{asiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="151" height="20" uuid="2cb827d1-1c74-42a1-9e82-af2239189e54">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cb217f1e-a490-4289-83bf-ce29c20d23e3"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{planCuenta}.getPlcNombre()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

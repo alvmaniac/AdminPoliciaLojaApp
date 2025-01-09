@@ -1,0 +1,251 @@
+@charset "utf-8";
+.header_container {
+    color: #ffffff;
+    background: #3d3d3d;
+    display:flex;
+    width: 100%; 
+}
+
+.header_container::before{
+    content: "";
+    display:flex;
+    background: #3d3d3d;
+    width: 10%;
+    float:left;
+    background-repeat: no-repeat;
+    background-size: 120px 100px;
+    background-position: left;
+}
+.header_container::after{
+    content: "";
+    display:flex;
+    background: #3d3d3d;
+    width: 10%;
+    float:left;
+}
+
+.header_subcontainer {
+    color: #ffffff;
+    background: #3d3d3d;
+    width: 80%;
+}
+.header_nav {
+    background: #3d3d3d;
+    height: 20px;
+    display:flex;
+    width: 100%;
+}
+
+.header_nav_left {
+	width: 50%;
+	display:flex;
+	padding-top: 10px;
+}
+
+.header_nav_rigth {
+	width: 50%;
+	text-align: right;
+}
+
+.fa-bars{
+	color: #fff;
+	font-size: 18px;
+}
+
+.fa-bars:hover{
+	color: #fff;
+}
+
+.menuCategorias{
+	width: 160px;
+}
+
+.menuCuenta{
+	width: 160px;
+}
+
+.link_contact {
+	color: #FFFFFF;
+	font-family: Verdana;
+	font-size: 10pt;
+	text-align: center;
+	font-style: normal;
+	text-decoration: none;	
+}
+
+.header_center {
+	background: #3d3d3d;
+    width: 100%;
+    text-align: center;
+    display:flex;
+    height: 60px;
+} 
+
+.header_bottom {
+	color: #ffffff;
+    width: 100%;
+}  
+
+.divBars{
+	min-width: 5%;
+	background-color: #3d3d3d;
+}
+
+.divBars .ui-state-default{
+	background: none !important;
+	border: none;
+	-webkit-box-shadow: none;
+	
+}
+
+ .ui-menu, .ui-menu .ui-menu-child{       
+   background: #3d3d3d; 
+}
+
+.ui-menubar{       
+   background: #3d3d3d; 
+}
+
+.ui-widget-content a{
+	color:#ffffff; 
+	text-decoration: none;
+}
+
+.divCarrito{
+	padding-top: 7px;
+	position: relative;
+	width: 5%;
+	padding-left: 5px;
+}
+
+.styleCarrito{
+	display: inline-block;
+}
+
+.styleCarrito:before{
+	content: url("#{resource['imagenes/carrito.png']}");
+}
+
+.divCantidad{
+	color: #ffffff;
+	position:absolute;
+	font-size: 11px;
+	right: 21px;
+}
+
+.divLogo{
+	width: 20%;
+}
+
+.styleLogo{
+	width: 100%;
+	height: 50px;
+	object-fit: contain;
+	object-position: center center;
+}
+
+.selectFind {
+    margin: 0;
+    background: #c4c4c4;
+    border: none;
+    font-weight: normal;
+    outline: medium none;
+    box-shadow: inset 0 0 0 #8f8f8f!important;
+    height: 36px;
+    text-align: center;
+    border-radius: 0px;
+    cursor: pointer;
+    min-width: 20%;
+} 
+
+.divFind{
+	display: flex;
+	width: 65%;
+}
+
+.divCuenta {
+	min-width: 5%;
+}
+
+.divCuenta .ui-state-default{
+	background: none !important;
+	border: none;
+	-webkit-box-shadow: none;
+	
+}
+
+.selectFind > label{
+	text-align: center !important;
+	border: none;
+    background: #c4c4c4;
+    box-shadow: inset 0 0 0 #8f8f8f!important;
+} 
+
+.selectFind > div{
+	border: none;
+    background: #c4c4c4;
+    box-shadow: inset 0 0 0 #8f8f8f!important;
+} 
+.selectFindInser {
+    margin: 0;
+    background: #ffffff;
+    border: none;
+    font-weight: normal;
+    outline: medium none;
+    box-shadow: inset 0 0 0 #8f8f8f!important;
+    border-radius: 0px;
+    height: 28px;
+    text-align: justify;
+    width: 95%;
+}
+
+.menuHead {
+	text-decoration: none;
+	background: #3d3d3d !important; 
+	border: none;
+    box-shadow: inset 0 0 0 #8f8f8f!important;
+    padding: 0px;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+.selectFindButton {
+	color: #ffffff;
+	background:  #febd69;
+	border: none;
+	height: 36px;
+	width: 50px;
+	border-radius: 0px;
+	cursor: pointer;
+	box-shadow: inset 0 0px 0 #fff;
+}
+
+.selectFindButton:hover{
+	box-shadow: 0 0 8px 0 #85b2cb;
+}
+
+.bars {
+	background-image: url("#{resource['imagenes/bars-black.png']}") !important; 
+}
+
+.userWhite {
+	background-image: url("#{resource['imagenes/user_white.png']}") !important;
+	background-size: 25px 25px;
+	height: 25px;
+	width: 25px;
+}
+
+.userOrange {
+	background-image: url("#{resource['imagenes/user_orange.png']}") !important;
+	background-size: 25px 25px;
+	height: 25px;
+	width: 25px;
+}
+
+.menuItenCatePading {
+	padding-right: 5px !important;
+}
+
+.mobileView{
+	display: none !important;
+}
