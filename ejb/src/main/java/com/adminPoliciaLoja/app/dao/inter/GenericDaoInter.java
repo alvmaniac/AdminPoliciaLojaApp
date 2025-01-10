@@ -13,6 +13,6 @@ public interface GenericDaoInter< T extends Serializable >  {
 	   public void saveWithoutInterceptor( T entity ) throws AdminPoliciaLojaException;
 	   public void update( T entity )throws AdminPoliciaLojaException;
 	   public void delete( T entity )throws AdminPoliciaLojaException;
-	   public void deleteById( Long entityId )throws AdminPoliciaLojaException;
+	   public void deleteById( Integer entityId )throws AdminPoliciaLojaException;
 	   public List<T> findResult(String namedQuery, Map<String, Object> parameters)throws AdminPoliciaLojaException;
 }
