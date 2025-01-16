@@ -1,4 +1,4 @@
-package com.adminPoliciaLoja.web.bean.usuario;
+package com.adminPoliciaLoja.web.beans.usuario;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -25,8 +25,9 @@ import com.adminPoliciaLoja.web.util.FacesContextUtil;
 @ViewScoped
 @Named
 public class UsuarioBean implements Serializable{
-	private static final long serialVersionUID = -5421684862093202443L;
-	
+
+	private static final long serialVersionUID = -9219567535766888501L;
+	private Usuario user;
 	private Usuario usuario;
 	private boolean isUpdate=false;
 	private Rol rol;
@@ -39,11 +40,12 @@ public class UsuarioBean implements Serializable{
 	
 	@PostConstruct
 	public void ini() {
+		this.user=(Usuario)FacesContextUtil.getObjetoSession("user");
 		this.usuario=(Usuario)FacesContextUtil.getObjetoSession("USUARIO");
 		FacesContextUtil.eliminarObjetoSession("USUARIO");
 		try {
 			this.roles=DaoFactory.getInstance().getRolDao().findAll();
-			this.perPolis=DaoFactory.getInstance().getPersonalPolicialDao().findAll();
+			this.perPolis=DaoFactory.getInstance().getPersonalPolicialDao().findAllActive();
 			if (this.usuario!=null) {
 				inicializaUpdate();
 			}else {
@@ -74,9 +76,12 @@ public class UsuarioBean implements Serializable{
 			this.usuario.setClave(Cripto.encrypSHA256Code64(this.usuario.getClave()));
 			this.usuario.setClaveTemporal("NO");
 			this.usuario.setLoginFallido(0);
+			this.usuario.setNombreapellido(this.perPoli.getNombreapellido());
 			this.usuario.setRol(this.rol);
 			this.usuario.setPersonalpolicial(this.perPoli);
 			this.usuario.setEstado("ACTIVO");
+			this.usuario.setUsercreacion(this.user.getUser());
+			this.usuario.setFechacreacion(FechasUtil.getDateTimeEcuador());
 			DaoFactory.getInstance().getUsuarioDao().save(this.usuario);
 			
 			Map<String, String> param = new HashMap<String, String>();
@@ -104,7 +109,10 @@ public class UsuarioBean implements Serializable{
 	public String  modificar(){
 		try {
 			this.usuario.setRol(this.rol);
+			this.usuario.setNombreapellido(this.perPoli.getNombreapellido());
 			this.usuario.setPersonalpolicial(this.perPoli);
+			this.usuario.setUsermodif(user.getUser());
+			this.usuario.setFechamodif(FechasUtil.getDateTimeEcuador());
 			DaoFactory.getInstance().getUsuarioDao().update(this.usuario);
 		}catch (AdminPoliciaLojaException e) {
 			FacesContextUtil.addError(e.getMessage());
@@ -158,6 +166,14 @@ public class UsuarioBean implements Serializable{
 
 	public void setPerPolis(List<Personalpolicial> perPolis) {
 		this.perPolis = perPolis;
+	}
+
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 	
 }

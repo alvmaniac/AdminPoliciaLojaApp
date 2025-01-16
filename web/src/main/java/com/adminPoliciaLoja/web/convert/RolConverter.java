@@ -24,7 +24,7 @@ public class RolConverter implements Converter<Rol> {
             } catch (AdminPoliciaLojaException e) {
             	throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage()));
             } catch(NumberFormatException e) {
-                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Cant�n no valido"));
+                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Valor no valido"));
             } 
         }
         else {

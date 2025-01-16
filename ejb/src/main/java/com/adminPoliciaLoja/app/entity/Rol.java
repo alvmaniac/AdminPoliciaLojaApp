@@ -3,6 +3,7 @@ package com.adminPoliciaLoja.app.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -66,4 +67,21 @@ public class Rol implements Serializable {
 		return usuario;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Rol)) 
+			return false;
+		
+		Rol other = (Rol) obj;
+		return id == other.id;
+	}
 }

@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Usuario.findByEmail", query="select o from Usuario o where o.user =?1"),
+	@NamedQuery(name="Usuario.findByEmail", query="select o from Usuario o where o.personalpolicial.email =?1"),
 	@NamedQuery(name="Usuario.findByCI", query="select o from Usuario o where o.personalpolicial.cedula =?1")})
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -44,12 +44,12 @@ public class Usuario implements Serializable {
 	private String usermodif;
 
 	//bi-directional many-to-one association to Personalpolicial
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="PersonalpolicialID")
 	private Personalpolicial personalpolicial;
 
 	//bi-directional many-to-one association to Rol
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="RolID")
 	private Rol rol;
 

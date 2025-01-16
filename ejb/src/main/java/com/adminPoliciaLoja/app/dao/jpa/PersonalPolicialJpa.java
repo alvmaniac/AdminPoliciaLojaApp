@@ -9,4 +9,5 @@ import com.adminPoliciaLoja.app.entity.Personalpolicial;
 @Stateless
 public class PersonalPolicialJpa extends GenericJpaImp<Personalpolicial>  implements PersonalPolicialDao  {
 	
+	
 }

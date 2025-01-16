@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -128,6 +129,24 @@ public class Impuesto implements Serializable {
 		serviciosrepuesto.setImpuesto(null);
 
 		return serviciosrepuesto;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Impuesto)) 
+			return false;
+		
+		Impuesto other = (Impuesto) obj;
+		return id == other.id;
 	}
 
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+		<p:panel>			
+			<h:form id="formUsu">
+				<h:outputText value="FLOTA VEHICULAR" styleClass="etiqueta2"/>
+				<p:spacer height="10" />
+				<p:dataTable id="tabla" value="#{flotaVehicularListBean.flotas}" var="o" rows="15" widgetVar="usuTable" paginator="true" reflow="true" style="margin-top:10px">
+           			<p:column headerText="Acción" exportable="false">
+						<p:menuButton value="Options">
+					        <p:menuitem value="Modificar"  icon="ui-icon-pencil" immediate="true" action="#{flotaVehicularListBean.cargaDatos}" process="@this" >
+					        	<f:setPropertyActionListener value="#{o}" target="#{flotaVehicularListBean.flota}" />	
+					        </p:menuitem>
+					        <p:menuitem value="Activar" icon="ui-icon-check" immediate="true"  action="#{flotaVehicularListBean.cargaDatosActivInact}" oncomplete="PF('dlg1').show()"  update=":formUsu:pgP">
+					        	<f:setPropertyActionListener value="#{o}" target="#{flotaVehicularListBean.flota}" />
+					        	<f:param name="activ" value="ACTIVO"/>	
+					        </p:menuitem>
+					        <p:menuitem value="Inactivar" icon="ui-icon-close" immediate="true"  action="#{flotaVehicularListBean.cargaDatosActivInact}" oncomplete="PF('dlg1').show()" update=":formUsu:pgP">
+					        	<f:setPropertyActionListener value="#{o}" target="#{flotaVehicularListBean.flota}" />
+					        	<f:param name="activ" value="INACTIVO"/>	
+					        </p:menuitem>
+					    </p:menuButton>
+					</p:column>
+					<p:column headerText="Placa" filterBy="#{o.placa}">
+						<h:outputText value="#{o.placa}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Color" filterBy="#{o.color}">
+						<h:outputText value="#{o.color}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Marca" filterBy="#{o.modelo}" >
+						<h:outputText value="#{o.modelo}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Tipo" filterBy="#{o.tipovehiculo.descripcion}" >
+						<h:outputText value="#{o.tipovehiculo.descripcion}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Conductor" filterBy="#{o.personalpolicial.nombreapellido}">
+						<h:outputText value="#{o.personalpolicial.nombreapellido}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Dependencia" filterBy="#{o.dependencia.nombresubcircuitos}" >
+						<h:outputText value="#{o.dependencia.nombresubcircuitos}" styleClass="texto"  />
+					</p:column>										
+					<p:column headerText="Estado" filterBy="#{o.estado}" filterMatchMode="exact">
+						<f:facet name="filter">
+			                <p:selectOneMenu onchange="PF('usuTable').filter()">
+			                    <f:selectItem itemLabel="Todos" itemValue="" />
+			                    <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO" />
+			                    <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVO" />
+			                </p:selectOneMenu>
+			            </f:facet>
+						<h:outputText  value ="#{o.estado}" styleClass="texto" />
+					</p:column>
+				</p:dataTable>
+				
+				<p:panelGrid>
+					 <p:row>
+                        <p:column>
+                        	<p:commandButton ajax="false" icon="fa fa-file-excel-o" value="XLSX">
+					             <p:dataExporter type="xlsxstream" target="tabla" fileName="Flota_Vehicular"/>
+					        </p:commandButton>
+                        </p:column>
+                        <p:column>
+                        	<p:commandButton ajax="false" icon="fa fa-file-pdf-o" value="PDF">
+				            	<p:dataExporter type="pdf" target="tabla" fileName="Flota_Vehicular"/>
+				        	</p:commandButton>
+                        </p:column>
+                     </p:row>
+				</p:panelGrid>
+				
+				<p:dialog header="CONFIRMACIÓN" widgetVar="dlg1" width="40%" height="20%" modal="true" position="center center" onShow="PF('dlg1').initPosition()" responsive="true" >
+					<h:panelGrid id="pgP">
+					    <h:outputText value="Esta seguro que desea cambiar el estado de #{flotaVehicularListBean.flota.placa} a #{flotaVehicularListBean.isActive}" />
+				    	<h:panelGrid columns="2" columnClasses="ui-g-12 ui-md-6, ui-g-12 ui-md-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					    	<p:commandButton styleClass="buttonNormal" value="Aceptar"  immediate="true" action="#{flotaVehicularListBean.activarInactivar}" update=":formUsu" oncomplete="PF('dlg1').hide()"/>
+							<p:commandButton styleClass="buttonNormal" value="Cancelar"  oncomplete="PF('dlg1').hide()"/>
+						</h:panelGrid>
+					</h:panelGrid>
+				</p:dialog>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

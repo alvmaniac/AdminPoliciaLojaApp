@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
@@ -48,12 +49,12 @@ public class Ordentrabajo implements Serializable {
 	private BigDecimal valorunitario;
 
 	//bi-directional many-to-one association to Mantenimiento
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="MantenimientoID")
 	private Mantenimiento mantenimiento;
 
 	//bi-directional many-to-one association to Serviciosrepuesto
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="ServiciosrepuestosID")
 	private Serviciosrepuesto serviciosrepuesto;
 
@@ -178,6 +179,24 @@ public class Ordentrabajo implements Serializable {
 
 	public void setServiciosrepuesto(Serviciosrepuesto serviciosrepuesto) {
 		this.serviciosrepuesto = serviciosrepuesto;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Ordentrabajo)) 
+			return false;
+		
+		Ordentrabajo other = (Ordentrabajo) obj;
+		return id == other.id;
 	}
 
 }

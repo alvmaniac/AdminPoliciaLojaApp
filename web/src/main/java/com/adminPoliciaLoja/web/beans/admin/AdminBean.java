@@ -18,7 +18,6 @@ import com.adminPoliciaLoja.web.util.FacesContextUtil;
 public class AdminBean implements Serializable{
 	private static final long serialVersionUID = -5421684862093202443L;
 	private Usuario usuario;
-	private Long emp ;
 	private boolean menuDisabled =true;
 	
 	public AdminBean() {
@@ -26,11 +25,14 @@ public class AdminBean implements Serializable{
 	
 	@PostConstruct
 	public void ini() {
-			this.usuario=(Usuario)FacesContextUtil.getObjetoSession("user");
+		this.usuario=(Usuario)FacesContextUtil.getObjetoSession("user");
 	}
 	
+		 
+	
 	public String cerrarSesion(){
-		ExternalContext externalContext = FacesContextUtil.getExternalContext();;
+		FacesContextUtil.eliminarObjetoSession("user");
+		ExternalContext externalContext = FacesContextUtil.getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
         externalContext.invalidateSession();
         try {
@@ -39,15 +41,6 @@ public class AdminBean implements Serializable{
 			e.printStackTrace();
 		}
 		return "/inicio?faces-redirect=true";
-	}
-
-
-	public Long getEmp() {
-		return emp;
-	}
-
-	public void setEmp(Long emp) {
-		this.emp = emp;
 	}
 
 	public Usuario getUsuario() {

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+
+		<p:panel>
+			<h:form id="formCli">
+			 	<h:outputText value="FLOTA VEHICULAR" styleClass="etiqueta2"/>
+			 	<p:spacer height="10" />
+			 	<p:messages>
+			        <p:autoUpdate />
+			    </p:messages>
+		        <h:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" id="pgClient">
+		           	
+		           	<p:outputLabel for="itPlaca" value="Placa:" styleClass="etiqueta"/>
+					<p:inputText id="itPlaca" value="#{flotaVehicularBean.flota.placa}" disabled="#{flotaVehicularBean.isUpdate}"
+						required="true" styleClass="campo" maxlength="10"/>
+						
+					<p:outputLabel for="itTipo" value="Tipo: " styleClass="etiqueta"/>
+					<p:selectOneMenu id="itTipo" value="#{flotaVehicularBean.tipoVehiculo}" converter="tipoVehiculoConverter"
+					required="true" styleClass="campo" maxlength="15">
+						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+						<f:selectItems value="#{flotaVehicularBean.tipoVehiculos}" var="p" itemLabel="#{p.descripcion}" itemValue="#{p}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="itMarca" value="Marca:" styleClass="etiqueta"/>
+					<p:selectOneMenu id="itMarca" value="#{flotaVehicularBean.flota.modelo}"
+						required="true" styleClass="campo" maxlength="15">
+	                    <f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+	                    <f:selectItem itemLabel="TOYOTA" itemValue="TOYOTA" />
+	                    <f:selectItem itemLabel="CHEVROLET" itemValue="CHEVROLET" />
+	                    <f:selectItem itemLabel="MAZDA" itemValue="MAZDA" />
+	                    <f:selectItem itemLabel="HYUNDAI" itemValue="HYUNDAI" />
+	                    <f:selectItem itemLabel="KIA" itemValue="KIA" />
+	                    <f:selectItem itemLabel="RENAULT" itemValue="RENAULT" />
+	                    <f:selectItem itemLabel="SUZUKI" itemValue="SUZUKI" />
+	                    <f:selectItem itemLabel="VOLKSWAGEN" itemValue="VOLKSWAGEN" />
+	                     <f:selectItem itemLabel="NISSAN" itemValue="NISSAN" />
+	                      <f:selectItem itemLabel="FORD" itemValue="FORD" />
+	                </p:selectOneMenu>	
+					
+					<p:outputLabel for="itColor" value="Color:" styleClass="etiqueta"/>
+					<p:selectOneMenu id="itColor" value="#{flotaVehicularBean.flota.color}"
+						required="true" styleClass="campo" maxlength="15">
+	                    <f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+	                    <f:selectItem itemLabel="NEGRO" itemValue="NEGRO" />
+	                    <f:selectItem itemLabel="BLANCO" itemValue="BLANCO" />
+	                    <f:selectItem itemLabel="GRIS" itemValue="GRIS" />
+	                    <f:selectItem itemLabel="PLOMO" itemValue="PLOMO" />
+	                    <f:selectItem itemLabel="AZUL" itemValue="AZUL" />
+	                    <f:selectItem itemLabel="VERDE" itemValue="VERDE" />
+	                    <f:selectItem itemLabel="ROJO" itemValue="ROJO" />
+	                    <f:selectItem itemLabel="AMARILLO" itemValue="AMARILLO" />
+	                </p:selectOneMenu>		
+						
+						
+					<p:outputLabel for="itAnio" value="Año:" styleClass="etiqueta"/>
+					<p:inputNumber id="itAnio" value="#{flotaVehicularBean.flota.anio}" 
+						required="true" styleClass="campo" maxlength="4" minValue="1" decimalPlaces="0" maxValue="9999"/>
+					
+					<p:outputLabel for="itPerPoli" value="Conductor: " styleClass="etiqueta"/>
+					<p:selectOneMenu id="itPerPoli" value="#{flotaVehicularBean.policia}" converter="perPolicialConverter"
+					required="true" styleClass="campo" maxlength="15">
+						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+						<f:selectItems value="#{flotaVehicularBean.policias}" var="p" itemLabel="#{p.nombreapellido}" itemValue="#{p}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="itDep" value="Dependencia: " styleClass="etiqueta"/>
+					<p:selectOneMenu id="itDep" value="#{flotaVehicularBean.dependencia}" converter="dependenciaConverter"
+					required="false" styleClass="campo" maxlength="15" >
+						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+						<f:selectItems value="#{flotaVehicularBean.dependencias}" var="c" itemLabel="#{c.nombresubcircuitos}" itemValue="#{c}" />
+					</p:selectOneMenu>
+	            </h:panelGrid>
+	           	<p:commandButton value="Guardar" styleClass="buttonNormal" disabled="#{flotaVehicularBean.isUpdate}"  action="#{flotaVehicularBean.ingresa}" update=":formCli"/>
+	           	<p:commandButton value="Modificar" styleClass="buttonNormal" disabled="#{!flotaVehicularBean.isUpdate}" action="#{flotaVehicularBean.modificar}" update=":formCli"/>
+	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{flotaVehicularBean.inicializa}" immediate="true" update=":formCli"/>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>

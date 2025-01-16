@@ -3,6 +3,7 @@ package com.adminPoliciaLoja.app.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -64,6 +65,23 @@ public class Tipovehiculo implements Serializable {
 		flotavehicular.setTipovehiculo(null);
 
 		return flotavehicular;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Tipovehiculo)) 
+			return false;
+		Tipovehiculo other = (Tipovehiculo) obj;
+		return id == other.id;
 	}
 
 }

@@ -58,6 +58,17 @@ public abstract class GenericJpaImp< T extends Serializable > implements Generic
 			}
 	   }
 	   
+	   public List< T > findAllActive() throws AdminPoliciaLojaException{
+			try {
+				TypedQuery<T> qr =em.createQuery( "from " + clazz.getName()+" where estado = 'ACTIVO'",clazz);
+			   return qr.getResultList();
+			}catch (EJBException e) {
+				throw new AdminPoliciaLojaException(VariablesStatic.EXCEPTION_SYSTEM +"_2_" +clazz.getSimpleName().toUpperCase(),e.getMessage());
+			}catch (Exception e) {
+				throw new AdminPoliciaLojaException(VariablesStatic.EXCEPTION_APPLICATION+"_2_" +clazz.getSimpleName().toUpperCase(),e.getMessage());
+			}
+	   }
+	   
 	   public void save( T entity ) throws AdminPoliciaLojaException{
 		   try {	
 			   em.persist( entity );

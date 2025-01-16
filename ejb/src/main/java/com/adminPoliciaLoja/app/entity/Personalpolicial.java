@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -58,12 +59,12 @@ public class Personalpolicial implements Serializable {
 	private List<Ordenmovilizacion> ordenmovilizacions;
 
 	//bi-directional many-to-one association to Dependencia
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="DependenciaID")
 	private Dependencia dependencia;
 
 	//bi-directional many-to-one association to Rangopolicial
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="RangopolicialID")
 	private Rangopolicial rangopolicial;
 
@@ -268,4 +269,20 @@ public class Personalpolicial implements Serializable {
 		return usuario;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Personalpolicial)) 
+			return false;
+		Personalpolicial other = (Personalpolicial) obj;
+		return id == other.id;
+	}
 }

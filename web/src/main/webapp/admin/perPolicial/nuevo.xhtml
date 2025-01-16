@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+
+		<p:panel>
+			<h:form id="formCli">
+			 	<h:outputText value="PERSONAL POLICIAL" styleClass="etiqueta2"/>
+			 	<p:spacer height="10" />
+			 	<p:messages>
+			        <p:autoUpdate />
+			    </p:messages>
+		        <h:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" id="pgClient">
+		           	<p:outputLabel for="itCed" value="Cédula:" styleClass="etiqueta"/>
+					<p:inputText id="itCed" value="#{perPolicialBean.perPolicial.cedula}" disabled="#{perPolicialBean.isUpdate}"
+						required="true" styleClass="campo" maxlength="10"/>
+					
+					<p:outputLabel for="itNom" value="Nombre:" styleClass="etiqueta"/>
+					<p:inputText id="itNom" value="#{perPolicialBean.perPolicial.nombreapellido}"
+						required="true" styleClass="campo" maxlength="80"/>
+		           
+		           <p:outputLabel for="itCod" value="Cod. Policial:" styleClass="etiqueta"/>
+					<p:inputText id="itCod" value="#{perPolicialBean.perPolicial.codpolicial}"
+						required="true" styleClass="campo" maxlength="10"/>
+					
+					<p:outputLabel for="itEmail" value="E-mail:" styleClass="etiqueta"/>
+					<p:inputText id="itEmail" value="#{perPolicialBean.perPolicial.email}"
+						required="true" styleClass="campo" maxlength="60" disabled="#{perPolicialBean.isUpdate}">
+						<f:validator validatorId="ExpRegMailValidator" />
+						<f:validator validatorId="UnitMailValidator" />
+					</p:inputText>
+					
+					<p:outputLabel for="itDir" value="Dirección:" styleClass="etiqueta"/>
+					<p:inputText id="itDir" value="#{perPolicialBean.perPolicial.direccion}"
+						required="true" styleClass="campo" maxlength="100"/>
+						
+					<p:outputLabel for="itCel" value="Celular:" styleClass="etiqueta"/>
+					<p:inputText id="itCel" value="#{perPolicialBean.perPolicial.telcelular}"
+						required="true" styleClass="campo" maxlength="10"/>
+					
+					
+					<p:outputLabel for="itSang" value="Tipo Sangre:" styleClass="etiqueta"/>
+					<p:inputText id="itSang" value="#{perPolicialBean.perPolicial.tiposangre}"
+						required="true" styleClass="campo" maxlength="8"/>
+					
+					<p:outputLabel for="itNac" value="Fecha Nacim.:" styleClass="etiqueta"/>
+					<p:calendar id="itNac" value="#{perPolicialBean.perPolicial.fechanacimiento}" showOn="button" 
+						required="true" pattern="yyyy-MM-dd"/>
+						
+					<p:outputLabel for="itRango" value="Rango" styleClass="etiqueta"/>
+					<p:selectOneMenu id="itRango" value="#{perPolicialBean.rango}" converter="rangoConverter"
+					required="true" styleClass="campo" maxlength="15">
+						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+						<f:selectItems value="#{perPolicialBean.rangos}" var="p" itemLabel="#{p.descripcion}" itemValue="#{p}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="itDep" value="Dependencia" styleClass="etiqueta"/>
+					<p:selectOneMenu id="itDep" value="#{perPolicialBean.dependencia}" converter="dependenciaConverter"
+					required="false" styleClass="campo" maxlength="15" >
+						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+						<f:selectItems value="#{perPolicialBean.dependencias}" var="c" itemLabel="#{c.nombresubcircuitos}" itemValue="#{c}" />
+					</p:selectOneMenu>
+	            </h:panelGrid>
+	           	<p:commandButton value="Guardar" styleClass="buttonNormal" disabled="#{perPolicialBean.isUpdate}"  action="#{perPolicialBean.ingresa}" update=":formCli"/>
+	           	<p:commandButton value="Modificar" styleClass="buttonNormal" disabled="#{!perPolicialBean.isUpdate}" action="#{perPolicialBean.modificar}" update=":formCli"/>
+	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{perPolicialBean.inicializa}" immediate="true" update=":formCli"/>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>

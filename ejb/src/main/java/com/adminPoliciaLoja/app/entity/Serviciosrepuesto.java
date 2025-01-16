@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -47,7 +48,7 @@ public class Serviciosrepuesto implements Serializable {
 	private List<Ordentrabajo> ordentrabajos;
 
 	//bi-directional many-to-one association to Impuesto
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="ImpuestoID")
 	private Impuesto impuesto;
 
@@ -162,6 +163,24 @@ public class Serviciosrepuesto implements Serializable {
 
 	public void setImpuesto(Impuesto impuesto) {
 		this.impuesto = impuesto;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Serviciosrepuesto)) 
+			return false;
+		
+		Serviciosrepuesto other = (Serviciosrepuesto) obj;
+		return id == other.id;
 	}
 
 }

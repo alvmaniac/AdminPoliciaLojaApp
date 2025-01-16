@@ -7,13 +7,9 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.context.ExternalContext;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-
-import org.omnifaces.cdi.Param;
 
 import com.adminPoliciaLoja.web.util.FacesContextUtil;
 import com.adminPoliciaLoja.app.common.AdminPoliciaLojaException;
@@ -32,23 +28,15 @@ public class LoginBean implements Serializable{
 	private String mail;
 	private String numDoc;
 	private String contrasenia;
-	@Inject @Param
-	private String originalURL;
+	
 	private boolean recuperaClave=false;
 
 	@PostConstruct
 	public void ini() {
 		try {
-			ExternalContext externalContext = FacesContextUtil.getExternalContext();
-//	        originalURL = (String) externalContext.getRequestMap().get(RequestDispatcher.FORWARD_REQUEST_URI);
-	        if (originalURL == null) {
-	            originalURL = externalContext.getRequestContextPath() + "/admin/adminHome?faces-redirect=true";
-	        } else {
-	            String originalQuery = (String) externalContext.getRequestMap().get(RequestDispatcher.FORWARD_QUERY_STRING);
-	            if (originalQuery != null) {
-	                originalURL += "?" + originalQuery;
-	            }
-	        }
+			Usuario user=(Usuario)FacesContextUtil.getObjetoSession("user");
+			if (user!= null)
+				FacesContextUtil.getExternalContext().redirect("/admin/adminHome");
 		}catch (Exception e) {
 			FacesContextUtil.addError("ERROR REDIRECCION");
 		}
@@ -74,10 +62,7 @@ public class LoginBean implements Serializable{
 				usuario.setFechamodif(FechasUtil.getDateTimeEcuador());
 				DaoFactory.getInstance().getUsuarioDao().update(usuario);
 //				r.setRegProceso("LOGIN");
-				if(originalURL!=null ||originalURL.contentEquals("") ) 
-					navega=originalURL;	
-				else
-					navega="/admin/adminHome";
+				navega="/admin/adminHome";
 			}else {
 				cerrarSesion();
 				FacesContextUtil.setObjetoSession("mailUsu",this.mail.trim());

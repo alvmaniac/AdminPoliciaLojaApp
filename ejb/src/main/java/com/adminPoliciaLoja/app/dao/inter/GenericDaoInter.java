@@ -9,6 +9,7 @@ import com.adminPoliciaLoja.app.common.AdminPoliciaLojaException;
 public interface GenericDaoInter< T extends Serializable >  {
 	   public T findOne( Integer id )throws AdminPoliciaLojaException;
 	   public List< T > findAll()throws AdminPoliciaLojaException;
+	   public List< T > findAllActive() throws AdminPoliciaLojaException;
 	   public void save( T entity )throws AdminPoliciaLojaException;
 	   public void saveWithoutInterceptor( T entity ) throws AdminPoliciaLojaException;
 	   public void update( T entity )throws AdminPoliciaLojaException;

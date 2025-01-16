@@ -1,4 +1,4 @@
-package com.adminPoliciaLoja.web.bean.usuario;
+package com.adminPoliciaLoja.web.beans.usuario;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -28,8 +28,8 @@ import com.adminPoliciaLoja.web.util.FacesContextUtil;
 @ViewScoped
 @Named
 public class UsuarioListBean implements Serializable{
-	private static final long serialVersionUID = -5421684862093202443L;
-	
+
+	private static final long serialVersionUID = -4517055964735459969L;
 	private Usuario usuario;
 	private List<Usuario> usuarios;
 	private String isActive;

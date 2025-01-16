@@ -13,7 +13,6 @@
 		  </locale-config>
 	    <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
 	 </application>
-	 
 	 <factory>
 		<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
 	 </factory>

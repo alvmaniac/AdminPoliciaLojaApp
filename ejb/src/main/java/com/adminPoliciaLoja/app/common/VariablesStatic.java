@@ -1,7 +1,5 @@
 package com.adminPoliciaLoja.app.common;
 
-import java.math.BigDecimal;
-
 public class VariablesStatic {
 	
 	public static final Long EMPRESA_DEFAULT=1l;
@@ -18,14 +16,7 @@ public class VariablesStatic {
 	public static final String TIPO_DOC_CI = "1";
 	public static final String TIPO_DOC_RUC = "2";
 	
-	public static final BigDecimal ENVIO_TREINTA_KG = new BigDecimal(30);
-	public static final BigDecimal ENVIO_CINCUENTA_KG = new BigDecimal(50);
-	
-	public static final String SERVIENTREGA_URL_LIQUIDADOR="http://www.servientrega.com.ec/liquidador/nacionalresponse";
-	public static final String SERVIENTREGA_PATH_CIUDADES_EC="/json/ciudadesEc.json";
-	public static final String SERVIENTREGA_ID_QUITO="2";
-	public static final String SERVIENTREGA_MERCANCIAS = "mercancias";
-	
+
 	public static final String FAC_ESTADO_ELECT_PENDIENTE="PENDIENTE";
 	public static final String FAC_ESTADO_ELECT_ENPROCESO="ENPROCESO";
 	public static final String FAC_ESTADO_ELECT_PROCESADA="PROCESADA";
@@ -52,17 +43,17 @@ public class VariablesStatic {
 	public static final String FAC_FORMA_PAGO_TARJETA="TARJETA";
 	public static final String FAC_FORMA_PAGO_TRANSFERENCIA="TRANSFERENCIA";
 	
-	public static final String EMAIL_IMAGE_HEADER="logo_elmer.png";
-	public static final String EMAIL_TO_OPERACIONES="info@elmer.ec";
-	public static final String EMAIL_CLAVE_TEMPORAL_SUBJECT="Clave temporal de elmer";
+	public static final String EMAIL_IMAGE_HEADER="PoliciaNacional.png";
+	public static final String EMAIL_TO_OPERACIONES="alvmaniac@gmail.ec";
+	public static final String EMAIL_CLAVE_TEMPORAL_SUBJECT="Clave temporal";
 	public static final String EMAIL_CLAVE_TEMPORAL_TEMPLATE="claveTemporal.html";
-	public static final String EMAIL_CUENTA_CREADA_SUBJECT="Cuenta creada en Elmer";
+	public static final String EMAIL_CUENTA_CREADA_SUBJECT="Cuenta creada";
 	public static final String EMAIL_CUENTA_CREADA_TEMPLATE="cuentaCreada.html";
 	public static final String EMAIL_CONTACTO_SUBJECT="Nuevo mensaje de contacto";
 	public static final String EMAIL_CONTACTO_TEMPLATE="contacto.html";
 	public static final String EMAIL_SONDA_SUBJECT="Pago de Facturas en batch";
 	public static final String EMAIL_SONDA_TEMPLATE="sonda.html";
-	public static final String EMAIL_COMPRA_SUBJECT="Nueva compra en elmer";
+	public static final String EMAIL_COMPRA_SUBJECT="Nueva compra";
 	public static final String EMAIL_COMPRA_TEMPLATE="compra.html";
 	public static final String EMAIL_TEMPLATE_SERVER_PATH= "/opt";
 	

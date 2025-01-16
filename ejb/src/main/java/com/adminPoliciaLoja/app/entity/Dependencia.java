@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -243,6 +244,23 @@ public class Dependencia implements Serializable {
 		personalpolicial.setDependencia(null);
 
 		return personalpolicial;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Dependencia)) 
+			return false;
+		Dependencia other = (Dependencia) obj;
+		return id == other.id;
 	}
 
 }

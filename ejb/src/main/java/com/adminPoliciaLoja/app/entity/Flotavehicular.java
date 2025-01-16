@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -41,17 +42,17 @@ public class Flotavehicular implements Serializable {
 	private String usermodif;
 
 	//bi-directional many-to-one association to Dependencia
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="DependenciaID")
 	private Dependencia dependencia;
 
 	//bi-directional many-to-one association to Personalpolicial
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="PersonalpolicialID")
 	private Personalpolicial personalpolicial;
 
 	//bi-directional many-to-one association to Tipovehiculo
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="TipovehiculoID")
 	private Tipovehiculo tipovehiculo;
 
@@ -212,6 +213,23 @@ public class Flotavehicular implements Serializable {
 		ordenmovilizacion.setFlotavehicular(null);
 
 		return ordenmovilizacion;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Flotavehicular)) 
+			return false;
+		Flotavehicular other = (Flotavehicular) obj;
+		return id == other.id;
 	}
 
 }

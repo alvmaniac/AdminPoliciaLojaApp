@@ -3,6 +3,7 @@ package com.adminPoliciaLoja.app.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -65,5 +66,24 @@ public class Rangopolicial implements Serializable {
 
 		return personalpolicial;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Rangopolicial))
+			return false;
+		Rangopolicial other = (Rangopolicial) obj;
+		return id == other.id;
+	}
+	
+	
 
 }

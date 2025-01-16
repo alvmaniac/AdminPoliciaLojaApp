@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+
+		<p:panel>
+			<h:form id="formCli">
+			 	<h:outputText value="MANTENIMIENTO VEHICULAR" styleClass="etiqueta2"/>
+			 	<p:spacer height="10" />
+			 	<p:messages>
+			        <p:autoUpdate />
+			    </p:messages>
+		        <h:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" id="pgClient">
+		           	
+		           	<p:outputLabel for="itVehi" value="Vehículo: " styleClass="etiqueta"/>
+					<p:selectOneMenu id="itVehi" value="#{mantenimientoBean.flota}" converter="flotaConverter"
+					required="true" styleClass="campo" maxlength="15">
+						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+						<f:selectItems value="#{mantenimientoBean.flotas}" var="p" itemLabel="#{p.placa}" itemValue="#{p}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="itFCita" value="Fecha Cita: " styleClass="etiqueta"/>
+					<p:calendar id="itFCita" value="#{mantenimientoBean.mantenimiento.fechacita}" showOn="button" 
+						required="true" pattern="yyyy-MM-dd HH:mm" timeInput="true"/>
+						
+					<p:outputLabel for="itFRecep" value="Fecha Recepción: " styleClass="etiqueta"/>
+					<p:calendar id="itFRecep" value="#{mantenimientoBean.mantenimiento.fecharecepcion}" showOn="button" 
+						pattern="yyyy-MM-dd HH:mm" timeInput="true"/>
+						
+					<p:outputLabel for="itFEnt" value="Fecha Entrega: " styleClass="etiqueta"/>
+					<p:calendar id="itFEnt" value="#{mantenimientoBean.mantenimiento.fechaentrega}" showOn="button" 
+						 pattern="yyyy-MM-dd HH:mm" timeInput="true"/>
+						
+					<p:outputLabel for="itKCita" value="Kilom. Cita: " styleClass="etiqueta"/>
+					<p:inputNumber id="itKCita" value="#{mantenimientoBean.mantenimiento.kilometrajecita}" 
+						 styleClass="campo" maxlength="11" minValue="1" decimalPlaces="0"/>
+						 
+					<p:outputLabel for="itKRec" value="Kilom. Recep.: " styleClass="etiqueta"/>
+					<p:inputNumber id="itKRec" value="#{mantenimientoBean.mantenimiento.kilometrajerecepcion}" 
+						 styleClass="campo" maxlength="11" minValue="1" decimalPlaces="0"/>
+					
+					<p:outputLabel for="itKEnt" value="Kilom. Entrega: " styleClass="etiqueta"/>
+					<p:inputNumber id="itKEnt" value="#{mantenimientoBean.mantenimiento.kilometrajeentrega}" 
+						 styleClass="campo" maxlength="11" minValue="1" decimalPlaces="0"/>
+					
+					<p:outputLabel for="itKPCita" value="Kilom. Prox. Cita: " styleClass="etiqueta"/>
+					<p:inputNumber id="itKPCita" value="#{mantenimientoBean.mantenimiento.kilometrajeproximarevicion}" 
+						 styleClass="campo" maxlength="11" minValue="1" decimalPlaces="0"/>
+						 
+					<p:outputLabel for="itTEst" value="Tiempo Estimado: " styleClass="etiqueta"/>
+					<p:calendar id="itTEst" value="#{mantenimientoBean.mantenimiento.tiempoestimado}" showOn="button" 
+						 pattern="HH:mm" timeInput="true" timeOnly="true"/>
+					
+					<p:outputLabel for="itTreal" value="Tiempo Real: " styleClass="etiqueta"/>
+					<p:calendar id="itTreal" value="#{mantenimientoBean.mantenimiento.tiemporeal}" showOn="button" 
+						 pattern="HH:mm" timeInput="true" timeOnly="true"/>
+					
+					<p:outputLabel for="itORec" value="Obser. Recepción: " styleClass="etiqueta"/>
+					<p:inputTextarea id="itORec" value="#{mantenimientoBean.mantenimiento.observacionrecepcion}" 
+						 styleClass="campo" maxlength="200" minValue="1" decimalPlaces="0"/>
+					
+					<p:outputLabel for="itOEnt" value="Obser. Entrega: " styleClass="etiqueta"/>
+					<p:inputTextarea id="itOEnt" value="#{mantenimientoBean.mantenimiento.observacionentrega}" 
+						 styleClass="campo" maxlength="200" minValue="1" decimalPlaces="0"/>
+					
+					<p:outputLabel for="itEman" value="Estado Mante.: " styleClass="etiqueta"/>
+					<p:selectOneMenu id="itEman" value="#{mantenimientoBean.mantenimiento.estadomantenimiento}"
+						required="true" styleClass="campo" maxlength="15">
+	                    <f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+	                    <f:selectItem itemLabel="CITA" itemValue="CITA" />
+	                    <f:selectItem itemLabel="RECEPCION" itemValue="RECEPCION" />
+	                    <f:selectItem itemLabel="TERMINADO" itemValue="TERMINADO" />
+	                    <f:selectItem itemLabel="FACTURADO" itemValue="FACTURADO" />
+	                </p:selectOneMenu>	
+					
+	            </h:panelGrid>
+	           	<p:commandButton value="Guardar" styleClass="buttonNormal" disabled="#{mantenimientoBean.isUpdate}"  action="#{mantenimientoBean.ingresa}" update=":formCli"/>
+	           	<p:commandButton value="Modificar" styleClass="buttonNormal" disabled="#{!mantenimientoBean.isUpdate}" action="#{mantenimientoBean.modificar}" update=":formCli"/>
+	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{mantenimientoBean.inicializa}" immediate="true" update=":formCli"/>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>

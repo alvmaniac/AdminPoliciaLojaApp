@@ -23,7 +23,7 @@
 		           					
 					<p:outputLabel for="itPerPoli" value="Personal Policial" styleClass="etiqueta"/>
 					<p:selectOneMenu id="itPerPoli" value="#{usuarioBean.perPoli}" converter="perPolicialConverter"
-					required="true" styleClass="campo" maxlength="15" >
+					required="true" styleClass="campo" maxlength="15" disabled="#{usuarioBean.isUpdate}">
 						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
 						<f:selectItems value="#{usuarioBean.perPolis}" var="p" itemLabel="#{p.nombreapellido}" itemValue="#{p}" />
 					</p:selectOneMenu>
