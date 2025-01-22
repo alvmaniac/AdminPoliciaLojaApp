@@ -21,30 +21,30 @@
 			 	<o:validateEqual id="equal" components="itContrasenia itRepetirCont" message="Contraseña Incorrecta" disabled="#{usuarioBean.isUpdate}" />
 		        <h:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" id="pgClient">
 		           					
-					<p:outputLabel for="itPerPoli" value="Personal Policial" styleClass="etiqueta"/>
+					<p:outputLabel for="itPerPoli" value="Personal Policial: " styleClass="etiqueta"/>
 					<p:selectOneMenu id="itPerPoli" value="#{usuarioBean.perPoli}" converter="perPolicialConverter"
 					required="true" styleClass="campo" maxlength="15" disabled="#{usuarioBean.isUpdate}">
 						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
 						<f:selectItems value="#{usuarioBean.perPolis}" var="p" itemLabel="#{p.nombreapellido}" itemValue="#{p}" />
 					</p:selectOneMenu>
 					
-					<p:outputLabel for="itEmail" value="E-mail:" styleClass="etiqueta"/>
+					<p:outputLabel for="itEmail" value="E-mail: " styleClass="etiqueta"/>
 					<p:inputText id="itEmail" value="#{usuarioBean.usuario.user}" disabled="#{usuarioBean.isUpdate}"
 						required="true" styleClass="campo" maxlength="60">
 						<f:validator validatorId="ExpRegMailValidator" />
 						<f:validator validatorId="UnitMailValidator" />
 					</p:inputText>
 				
-					<p:outputLabel for="itContrasenia" value="Contraseña:" styleClass="etiqueta" rendered="#{!usuarioBean.isUpdate}"/>
+					<p:outputLabel for="itContrasenia" value="Contraseña: " styleClass="etiqueta" rendered="#{!usuarioBean.isUpdate}"/>
 					<p:password id="itContrasenia" value="#{usuarioBean.usuario.clave}" feedback="true"
 						required="true" styleClass="campo" maxlength="15" rendered="#{!usuarioBean.isUpdate}" />
 
-					<p:outputLabel for="itRepetirCont" value="Repetir Contraseña:" styleClass="etiqueta" rendered="#{!usuarioBean.isUpdate}"/>
+					<p:outputLabel for="itRepetirCont" value="Repetir Contraseña: " styleClass="etiqueta" rendered="#{!usuarioBean.isUpdate}"/>
 					<p:password id="itRepetirCont" 
 						required="true" styleClass="campo" maxlength="15" rendered="#{!usuarioBean.isUpdate}">
 					</p:password>
 					
-					<p:outputLabel for="itRol" value="Rol" styleClass="etiqueta"/>
+					<p:outputLabel for="itRol" value="Rol: " styleClass="etiqueta"/>
 					<p:selectOneMenu id="itRol" value="#{usuarioBean.rol}" converter="rolConverter"
 					required="true" styleClass="campo" maxlength="15" >
 						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>

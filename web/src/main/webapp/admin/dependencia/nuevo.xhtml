@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+
+		<p:panel>
+			<h:form id="formCli">
+			 	<h:outputText value="DEPENDENCIA" styleClass="etiqueta2"/>
+			 	<p:spacer height="10" />
+			 	<p:messages>
+			        <p:autoUpdate />
+			    </p:messages>
+		        <h:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" id="pgClient">
+		           	
+		           	<p:outputLabel for="itProv" value="Provincia: " styleClass="etiqueta"/>
+					<p:inputText id="itProv" value="#{dependenciaBean.dependencia.provincia}"
+						required="true" styleClass="campo" maxlength="30"/>
+					
+					<p:outputLabel for="itNDist" value="No. Distritos: " styleClass="etiqueta"/>
+					<p:inputNumber id="itNDist" value="#{dependenciaBean.dependencia.nodistritos}" 
+						required="true" styleClass="campo" maxlength="4" minValue="1" decimalPlaces="0" maxValue="9999"/>
+					
+					<p:outputLabel for="itParroq" value="Parroquia: " styleClass="etiqueta"/>
+					<p:inputText id="itParroq" value="#{dependenciaBean.dependencia.parroquia}"
+						required="true" styleClass="campo" maxlength="30"/>
+					
+					<p:outputLabel for="itCDist" value="Cod. Distritos: " styleClass="etiqueta"/>
+					<p:inputText id="itCDist" value="#{dependenciaBean.dependencia.coddistritos}"
+						required="true" styleClass="campo" maxlength="12"/>
+					
+					<p:outputLabel for="itDist" value="Nombre Distrito: " styleClass="etiqueta"/>
+					<p:inputText id="itDist" value="#{dependenciaBean.dependencia.nombredistrito}" 
+						required="true" styleClass="campo" maxlength="30"/>
+						
+						
+						
+						
+					<p:outputLabel for="itNCirc" value="No. Circuito: " styleClass="etiqueta"/>
+					<p:inputNumber id="itNCirc" value="#{dependenciaBean.dependencia.nocircuitos}" 
+						required="true" styleClass="campo" maxlength="4" minValue="1" decimalPlaces="0" maxValue="9999"/>
+					
+					<p:outputLabel for="itCCirc" value="Cod. Circuito: " styleClass="etiqueta"/>
+					<p:inputText id="itCCirc" value="#{dependenciaBean.dependencia.codcircuito}"
+						required="true" styleClass="campo" maxlength="12"/>
+					
+					<p:outputLabel for="itCirc" value="Nombre Circuito: " styleClass="etiqueta"/>
+					<p:inputText id="itCirc" value="#{dependenciaBean.dependencia.nombrecircuito}" 
+						required="true" styleClass="campo" maxlength="30"/>
+						
+						
+					
+					<p:outputLabel for="itNSCirc" value="No. SubCircuito: " styleClass="etiqueta"/>
+					<p:inputNumber id="itNSCirc" value="#{dependenciaBean.dependencia.nosubcircuitos}" 
+						required="true" styleClass="campo" maxlength="4" minValue="1" decimalPlaces="0" maxValue="9999"/>
+					
+					<p:outputLabel for="itCSCirc" value="Cod. SubCircuito: " styleClass="etiqueta"/>
+					<p:inputText id="itCSCirc" value="#{dependenciaBean.dependencia.codsubcircuitos}"
+						required="true" styleClass="campo" maxlength="12"/>
+					
+					<p:outputLabel for="itSCirc" value="Nombre SubCircuito: " styleClass="etiqueta"/>
+					<p:inputText id="itSCirc" value="#{dependenciaBean.dependencia.nombresubcircuitos}" 
+						required="true" styleClass="campo" maxlength="30"/>
+						
+						
+					
+	            </h:panelGrid>
+	           	<p:commandButton value="Guardar" styleClass="buttonNormal" disabled="#{dependenciaBean.isUpdate}"  action="#{dependenciaBean.ingresa}" update=":formCli"/>
+	           	<p:commandButton value="Modificar" styleClass="buttonNormal" disabled="#{!dependenciaBean.isUpdate}" action="#{dependenciaBean.modificar}" update=":formCli"/>
+	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{dependenciaBean.inicializa}" immediate="true" update=":formCli"/>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>

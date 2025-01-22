@@ -16,6 +16,7 @@ import com.adminPoliciaLoja.app.dao.inter.MantenimientoDao;
 import com.adminPoliciaLoja.app.dao.inter.OrdenTrabajoDao;
 import com.adminPoliciaLoja.app.dao.inter.PersonalPolicialDao;
 import com.adminPoliciaLoja.app.dao.inter.RangoPolicialDao;
+import com.adminPoliciaLoja.app.dao.inter.ReclamoSugerenciaDao;
 import com.adminPoliciaLoja.app.dao.inter.RolDao;
 import com.adminPoliciaLoja.app.dao.inter.ServiciosRepuestoDao;
 import com.adminPoliciaLoja.app.dao.inter.TipoVehiculoDao;
@@ -155,6 +156,16 @@ private static DaoFactory instance;
 			throw new AdminPoliciaLojaException(VariablesStatic.EXCEPTION_NAMING +"_11_" +getClass().getSimpleName().toUpperCase(),e.getMessage());
 		}
 		return (ServiciosRepuestoDao)o;
+	}
+	
+	public ReclamoSugerenciaDao getReclamoSugerenciaDao() throws AdminPoliciaLojaException{
+		Object o = null;
+		try {
+			 o= InitialContext.doLookup("java:app/AdminPoliciaLoja/ReclamoSugerenciaJpa!com.adminPoliciaLoja.app.dao.inter.ReclamoSugerenciaDao");
+		} catch (NamingException e) {
+			throw new AdminPoliciaLojaException(VariablesStatic.EXCEPTION_NAMING +"_11_" +getClass().getSimpleName().toUpperCase(),e.getMessage());
+		}
+		return (ReclamoSugerenciaDao)o;
 	}
 	
 	

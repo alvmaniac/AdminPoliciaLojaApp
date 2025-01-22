@@ -12,6 +12,8 @@ import javax.inject.Named;
 import com.adminPoliciaLoja.app.common.AdminPoliciaLojaException;
 import com.adminPoliciaLoja.app.dao.factory.DaoFactory;
 import com.adminPoliciaLoja.app.entity.Personalpolicial;
+import com.adminPoliciaLoja.app.entity.Usuario;
+import com.adminPoliciaLoja.app.util.FechasUtil;
 import com.adminPoliciaLoja.web.util.FacesContextUtil;
 
 
@@ -49,6 +51,9 @@ public class PerPolicialListBean implements Serializable{
 	
 	public void activarInactivar(){
 		try {
+			Usuario user=(Usuario)FacesContextUtil.getObjetoSession("user");
+			this.perPolicial.setUsermodif(user.getUser());
+			this.perPolicial.setFechamodif(FechasUtil.getDateTimeEcuador());
 			this.perPolicial.setEstado(this.isActive);
 			DaoFactory.getInstance().getPersonalPolicialDao().update(this.perPolicial);
 			FacesContextUtil.inicializarVista();

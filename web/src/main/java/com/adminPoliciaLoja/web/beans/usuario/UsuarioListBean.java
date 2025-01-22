@@ -54,6 +54,9 @@ public class UsuarioListBean implements Serializable{
 	
 	public void activarInactivar(){
 		try {
+			Usuario user=(Usuario)FacesContextUtil.getObjetoSession("user");
+			this.usuario.setUsermodif(user.getUser());
+			this.usuario.setFechamodif(FechasUtil.getDateTimeEcuador());
 			this.usuario.setEstado(this.isActive);
 			DaoFactory.getInstance().getUsuarioDao().update(this.usuario);
 			FacesContextUtil.inicializarVista();

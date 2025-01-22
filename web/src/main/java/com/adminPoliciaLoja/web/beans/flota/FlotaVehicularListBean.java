@@ -12,6 +12,8 @@ import javax.inject.Named;
 import com.adminPoliciaLoja.app.common.AdminPoliciaLojaException;
 import com.adminPoliciaLoja.app.dao.factory.DaoFactory;
 import com.adminPoliciaLoja.app.entity.Flotavehicular;
+import com.adminPoliciaLoja.app.entity.Usuario;
+import com.adminPoliciaLoja.app.util.FechasUtil;
 import com.adminPoliciaLoja.web.util.FacesContextUtil;
 
 
@@ -49,6 +51,9 @@ public class FlotaVehicularListBean implements Serializable{
 	
 	public void activarInactivar(){
 		try {
+			Usuario user=(Usuario)FacesContextUtil.getObjetoSession("user");
+			this.flota.setUsermodif(user.getUser());
+			this.flota.setFechamodif(FechasUtil.getDateTimeEcuador());
 			this.flota.setEstado(this.isActive);
 			DaoFactory.getInstance().getFlotaVehicularDao().update(this.flota);
 			FacesContextUtil.inicializarVista();

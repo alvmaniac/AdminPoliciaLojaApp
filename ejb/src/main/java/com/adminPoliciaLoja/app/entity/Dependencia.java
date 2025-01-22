@@ -12,7 +12,9 @@ import java.util.Objects;
  * 
  */
 @Entity
-@NamedQuery(name="Dependencia.findAll", query="SELECT d FROM Dependencia d")
+@NamedQueries({
+	@NamedQuery(name="Dependencia.findAllCircuitos", query="select DISTINCT (o.nombrecircuito) from Dependencia o "),
+	@NamedQuery(name="Dependencia.findByCircuito", query="select o from Dependencia o where o.nombrecircuito =?1")})
 public class Dependencia implements Serializable {
 	private static final long serialVersionUID = 1L;
 

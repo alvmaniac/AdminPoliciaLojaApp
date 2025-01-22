@@ -6,6 +6,10 @@
 			<p:menuitem value="Usuarios" outcome="/admin/usuario/usuarioList" />
 			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
 		</p:submenu>
+		<p:submenu label="Dependencia" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
+			<p:menuitem value="Dependencias" outcome="/admin/dependencia/dependenciaList" />
+			<p:menuitem value="Nuevo" outcome="/admin/dependencia/nuevo"/>
+		</p:submenu>
 		<p:submenu label="Personal Policial" rendered="#{request.isUserInRole('ADMINISTRADOR')}">
 			<p:menuitem value="Personal Policial" outcome="/admin/perPolicial/perPolicialList" />
 			<p:menuitem value="Nuevo" outcome="/admin/perPolicial/nuevo"/>
@@ -19,7 +23,6 @@
 			<p:menuitem value="Nuevo" outcome="/admin/mantenimiento/nuevo"/>
 		</p:submenu>
 		<p:submenu label="Reportes" rendered="#{request.isUserInRole('ADMINISTRADOR') || request.isUserInRole('ALTA_GERENCIA')}">
-			<p:menuitem value="Reportes" outcome="/admin/usuario/usuarioList" />
-			<p:menuitem value="Nuevo" outcome="/admin/usuario/nuevo"/>
+			<p:menuitem value="Reclamos y Sugerencias" outcome="/admin/reportes/reclamoSugerencia" />
 		</p:submenu>
 </ui:composition>

@@ -1,4 +1,4 @@
-package com.adminPoliciaLoja.web.beans.mantenimiento;
+package com.adminPoliciaLoja.web.beans.dependencia;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 import com.adminPoliciaLoja.app.common.AdminPoliciaLojaException;
 import com.adminPoliciaLoja.app.dao.factory.DaoFactory;
-import com.adminPoliciaLoja.app.entity.Mantenimiento;
+import com.adminPoliciaLoja.app.entity.Dependencia;
 import com.adminPoliciaLoja.app.entity.Usuario;
 import com.adminPoliciaLoja.app.util.FechasUtil;
 import com.adminPoliciaLoja.web.util.FacesContextUtil;
@@ -24,20 +24,20 @@ import com.adminPoliciaLoja.web.util.FacesContextUtil;
  */
 @ViewScoped
 @Named
-public class MantenimientoListBean implements Serializable{
+public class DependenciaListBean implements Serializable{
 	
 	private static final long serialVersionUID = 1921636528657484152L;
-	private Mantenimiento mantenimiento;
-	private List<Mantenimiento> mantenimientos;
+	private Dependencia dependencia;
+	private List<Dependencia> dependencias;
 	private String isActive;
 	
-	public MantenimientoListBean() {
+	public DependenciaListBean() {
 	}
 	
 	@PostConstruct
 	public void ini() {
 		try {
-				this.mantenimientos= DaoFactory.getInstance().getMantenimientoDao().findAll();
+				this.dependencias= DaoFactory.getInstance().getDependenciaDao().findAll();
 		}catch (AdminPoliciaLojaException e) {
 			FacesContextUtil.addError(e.getMessage());
 		}
@@ -52,20 +52,19 @@ public class MantenimientoListBean implements Serializable{
 	public void activarInactivar(){
 		try {
 			Usuario user=(Usuario)FacesContextUtil.getObjetoSession("user");
-			this.mantenimiento.setUsermodif(user.getUser());
-			this.mantenimiento.setFechamodif(FechasUtil.getDateTimeEcuador());
-			this.mantenimiento.setEstado(this.isActive);
-			DaoFactory.getInstance().getMantenimientoDao().update(this.mantenimiento);
+			this.dependencia.setUsermodif(user.getUser());
+			this.dependencia.setFechamodif(FechasUtil.getDateTimeEcuador());
+			this.dependencia.setEstado(this.isActive);
+			DaoFactory.getInstance().getDependenciaDao().update(this.dependencia);
 			FacesContextUtil.inicializarVista();
 		}catch (AdminPoliciaLojaException e) {
 			FacesContextUtil.addError(e.getMessage());
 		}
 	}
 	
-	
 	public String cargaDatos(){
-		FacesContextUtil.setObjetoSession("MANTENIMIENTO", this.mantenimiento);
-		return "/admin/mantenimiento/nuevo";
+		FacesContextUtil.setObjetoSession("DEPENDENCIA", this.dependencia);
+		return "/admin/dependencia/nuevo";
 	}
 	
 	public String getIsActive() {
@@ -77,31 +76,31 @@ public class MantenimientoListBean implements Serializable{
 	}
 
 	/**
-	 * @return the mantenimiento
+	 * @return the dependencia
 	 */
-	public Mantenimiento getMantenimiento() {
-		return mantenimiento;
+	public Dependencia getDependencia() {
+		return dependencia;
 	}
 
 	/**
-	 * @param mantenimiento the mantenimiento to set
+	 * @param dependencia the dependencia to set
 	 */
-	public void setMantenimiento(Mantenimiento mantenimiento) {
-		this.mantenimiento = mantenimiento;
+	public void setDependencia(Dependencia dependencia) {
+		this.dependencia = dependencia;
 	}
 
 	/**
-	 * @return the mantenimientos
+	 * @return the dependencias
 	 */
-	public List<Mantenimiento> getMantenimientos() {
-		return mantenimientos;
+	public List<Dependencia> getDependencias() {
+		return dependencias;
 	}
 
 	/**
-	 * @param mantenimientos the mantenimientos to set
+	 * @param dependencias the dependencias to set
 	 */
-	public void setMantenimientos(List<Mantenimiento> mantenimientos) {
-		this.mantenimientos = mantenimientos;
+	public void setDependencias(List<Dependencia> dependencias) {
+		this.dependencias = dependencias;
 	}
 
 	

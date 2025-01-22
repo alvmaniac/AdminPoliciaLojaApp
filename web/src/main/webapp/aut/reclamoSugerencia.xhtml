@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+		<p:panel>
+			<h:form id="f">
+			 	<h:outputText value="RECLAMOS Y SUGERENCIAS" styleClass="etiqueta2"/>
+			 	<p:spacer height="10" />
+			 	<p:messages>
+			        <p:autoUpdate />
+			    </p:messages>
+		        <p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" id="pgClient">
+		           	<p:outputLabel for="Tipo" value="Tipo: " styleClass="etiqueta"/>
+					<p:selectOneMenu id="Tipo" value="#{reclamoSugerenciaBean.reclamoSuger.tipo}"
+						required="true" styleClass="campo" maxlength="15">
+	                    <f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+	                    <f:selectItem itemLabel="RECLAMO" itemValue="RECLAMO" />
+	                     <f:selectItem itemLabel="SUGERENCIA" itemValue="SUGERENCIA" />
+	                     <f:selectItem itemLabel="AGRADECIMIENTO" itemValue="AGRADECIMIENTO" />
+	                </p:selectOneMenu>	
+	                
+		           	<p:outputLabel for="Circuito" value="Circuito: " styleClass="etiqueta"/>
+					<p:selectOneMenu id="Circuito" value="#{reclamoSugerenciaBean.circuito}" 
+					required="true" styleClass="campo" maxlength="15"  valueChangeListener="#{reclamoSugerenciaBean.subcircuitosChangeListener}">
+						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true" />
+						<f:selectItems value="#{reclamoSugerenciaBean.circuitos}" var="o" itemLabel="#{o}" itemValue="#{o}" />
+						<f:ajax render="Subcircuito" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="Subcircuito" value="Subcircuito: " styleClass="etiqueta"/>
+					<p:selectOneMenu id="Subcircuito" value="#{reclamoSugerenciaBean.subcircuito}" converter="dependenciaConverter"
+					required="true" styleClass="campo" maxlength="15">
+						<f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+						<f:selectItems value="#{reclamoSugerenciaBean.subcircuitos}" var="p" itemLabel="#{p.nombresubcircuitos}" itemValue="#{p}" />
+					</p:selectOneMenu>
+		           	
+		           	
+		           	<p:outputLabel for="Nombres" value="Nombres: " styleClass="etiqueta"/>
+					<p:inputText id="Nombres" value="#{reclamoSugerenciaBean.reclamoSuger.nombres}"
+						required="true" styleClass="campo" maxlength="60"/>
+						
+					<p:outputLabel for="Apellidos" value="Apellidos: " styleClass="etiqueta"/>
+					<p:inputText id="Apellidos" value="#{reclamoSugerenciaBean.reclamoSuger.apellidos}"
+						required="true" styleClass="campo" maxlength="60"/>
+					
+					<p:outputLabel for="Contacto" value="Contacto: " styleClass="etiqueta"/>
+					<p:inputText id="Contacto" value="#{reclamoSugerenciaBean.reclamoSuger.contacto}"
+						 styleClass="campo" maxlength="60"/>
+						
+					<p:outputLabel for="Detalle" value="Detalle: " styleClass="etiqueta"/>
+					<p:inputTextarea id="Detalle" value="#{reclamoSugerenciaBean.reclamoSuger.detalle}" 
+						 required="true" styleClass="campo" maxlength="200" minValue="1" decimalPlaces="0"/>
+					
+	            </p:panelGrid>
+	           	<p:commandButton value="Guardar" styleClass="buttonNormal" action="#{reclamoSugerenciaBean.ingresa}" update=":f"/>
+	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{reclamoSugerenciaBean.inicializa}" immediate="true" update=":f"/>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>
