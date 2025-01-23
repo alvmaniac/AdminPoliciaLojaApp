@@ -155,17 +155,16 @@
 							</div>
 							<p:spacer height="5" />
 					     	<div jsf:id="buttPagar" style="text-align: center;">
-					     		<p:commandButton value="NUEVA FILA" process="@this" update=":form:msgs" action="#{ordenTrabajoBean.onAddNew()}" oncomplete="PF('cellCars').addRow();" immediate="true" styleClass="buttonNormal"/>
+					     		<p:commandButton value="AGREGAR" process="@this" update=":form:msgs" action="#{ordenTrabajoBean.onAddNew()}" oncomplete="PF('cellCars').addRow();" immediate="true" styleClass="buttonNormal"/>
 						        <p:commandButton value="GUARDAR" action="#{ordenTrabajoBean.facturar}" update=":form:msgs :form:pgridE :form:panelTabla :form:pgP" oncomplete="PF('dlg1').show()" styleClass="buttonNormal"/>
 					     	</div>
 				     	
 					     	<h:panelGrid >
-								<p:dialog header="CONFIRMACIÓN" widgetVar="dlg1" width="600" height="70" modal="true" position="center center" onShow="PF('dlg1').initPosition()" responsive="true" >
+								<p:dialog header="CONFIRMACIÓN" widgetVar="dlg1" width="350" height="70" modal="true" position="center center" onShow="PF('dlg1').initPosition()" responsive="true" >
 									<h:panelGrid id="pgP">
 										 <p:outputLabel value="Orden de Trabajo creada correctamente" styleClass="etiqueta"/>
 									     <f:facet name="footer" style="text-align:center">
 									    	<p:commandButton styleClass="buttonNormal" value="Aceptar"  update=":form" oncomplete="PF('dlg1').hide()"/>
-											<p:commandButton styleClass="buttonNormal" value="Cancelar"  oncomplete="PF('dlg1').hide()" />
 									    </f:facet>
 									</h:panelGrid>
 								</p:dialog>

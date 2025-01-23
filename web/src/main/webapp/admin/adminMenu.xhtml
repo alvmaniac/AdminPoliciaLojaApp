@@ -23,6 +23,7 @@
 			<p:menuitem value="Nuevo" outcome="/admin/mantenimiento/nuevo"/>
 		</p:submenu>
 		<p:submenu label="Reportes" rendered="#{request.isUserInRole('ADMINISTRADOR') || request.isUserInRole('ALTA_GERENCIA')}">
+			<p:menuitem value="Próximos mantenimeintos" outcome="/admin/reportes/proximoMantenimiento" />
 			<p:menuitem value="Reclamos y Sugerencias" outcome="/admin/reportes/reclamoSugerencia" />
 		</p:submenu>
 </ui:composition>

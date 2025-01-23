@@ -12,7 +12,10 @@ import java.util.Objects;
  * 
  */
 @Entity
-@NamedQuery(name="Mantenimiento.findAll", query="SELECT m FROM Mantenimiento m")
+
+@NamedQueries({
+	@NamedQuery(name="Mantenimiento.findAll", query="SELECT m FROM Mantenimiento m"),
+	@NamedQuery(name="Mantenimiento.proximoMantenimiento", query="select o from Mantenimiento o where o.fechaentrega BETWEEN  ?1 AND ?2")})
 public class Mantenimiento implements Serializable {
 	private static final long serialVersionUID = 1L;
 

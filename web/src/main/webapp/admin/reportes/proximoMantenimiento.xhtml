@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+		<p:panel>			
+			<h:form>
+				<h:outputText value="Próximos Mantenimientos" styleClass="etiqueta2"/>
+				<p:spacer height="20"/>
+				<p:messages>
+			        <p:autoUpdate />
+			    </p:messages>
+				<h:panelGrid columns="2" columnClasses="ui-g-12 ui-md-4,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" >
+					<p:outputLabel for="itFechaI" value="Fecha Inicio: " styleClass="etiqueta"  />
+					<p:calendar id="itFechaI"  value="#{proximosMantenimientosListBean.fechaIni}" showOn="button" 
+					required="true" pattern="yyyy-MM-dd" />
+					<p:outputLabel for="itFechaF" value="Fecha Fin: " styleClass="etiqueta" />
+					<p:calendar id="itFechaF" value="#{proximosMantenimientosListBean.fechaFin}" showOn="button" 
+					required="true" pattern="yyyy-MM-dd"/>																											
+				</h:panelGrid>
+				<p:spacer height="10"/>
+				<p:commandButton value="BUSCAR" action="#{proximosMantenimientosListBean.cargaReporte}" styleClass="buttonNormal"  update="tabla" />
+				<p:spacer height="20"/>
+				<p:dataTable id="tabla" value="#{proximosMantenimientosListBean.rep}" var="o" rows="15" widgetVar="usuTable" paginator="true" reflow="true" style="margin-top:10px">
+					<p:column headerText="PLACA">
+						<h:outputText value="#{o.flotavehicular.placa}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="CONDUCTOR">
+						<h:outputText value="#{o.flotavehicular.personalpolicial.nombreapellido}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="CORREO" >
+						<h:outputText value="#{o.flotavehicular.personalpolicial.email}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="ULTIMO KM" >
+						<h:outputText value="#{o.kilometrajeproximarevicion}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Circuito">
+						<h:outputText value="#{o.flotavehicular.dependencia.nombrecircuito}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Subcircuito">
+						<h:outputText value="#{o.flotavehicular.dependencia.nombresubcircuitos}" styleClass="texto"  />
+					</p:column>										
+				</p:dataTable>
+				
+				<p:panelGrid>
+					 <p:row>
+                        <p:column>
+                        	<p:commandButton ajax="false" icon="fa fa-file-excel-o" value="XLSX">
+					             <p:dataExporter type="xlsxstream" target="tabla" fileName="Proximos_Mantenimientos"/>
+					        </p:commandButton>
+                        </p:column>
+                        <p:column>
+                        	<p:commandButton ajax="false" icon="fa fa-file-pdf-o" value="PDF">
+				            	<p:dataExporter type="pdf" target="tabla" fileName="Proximos_Mantenimientos"/>
+				        	</p:commandButton>
+                        </p:column>
+                     </p:row>
+				</p:panelGrid>			                        									                        				                    																																
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
