@@ -44,7 +44,6 @@ public class DependenciaBean implements Serializable{
 	public void inicializa(){
 		this.setDependencia(new Dependencia());
 		this.setIsUpdate(false);
-		FacesContextUtil.inicializarVista();
 	}
 	
 	public void inicializaUpdate(){

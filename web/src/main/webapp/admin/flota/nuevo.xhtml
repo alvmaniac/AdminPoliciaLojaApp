@@ -81,7 +81,9 @@
 	            </h:panelGrid>
 	           	<p:commandButton value="Guardar" styleClass="buttonNormal" disabled="#{flotaVehicularBean.isUpdate}"  action="#{flotaVehicularBean.ingresa}" update=":formCli"/>
 	           	<p:commandButton value="Modificar" styleClass="buttonNormal" disabled="#{!flotaVehicularBean.isUpdate}" action="#{flotaVehicularBean.modificar}" update=":formCli"/>
-	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{flotaVehicularBean.inicializa}" immediate="true" update=":formCli"/>
+	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{flotaVehicularBean.inicializa}" immediate="true" update=":formCli">
+	           	  <p:resetInput target="pgClient"/>
+	           	 </p:commandButton>
 			</h:form>
 		</p:panel>
 	</ui:define>

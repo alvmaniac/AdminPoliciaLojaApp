@@ -59,7 +59,6 @@ public class PerPolicialBean implements Serializable{
 		this.setIsUpdate(false);
 		this.setRango(new Rangopolicial());
 		this.setDependencia(new Dependencia());
-		FacesContextUtil.inicializarVista();
 	}
 	
 	public void inicializaUpdate(){

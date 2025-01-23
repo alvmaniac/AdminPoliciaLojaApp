@@ -65,7 +65,6 @@ public class FlotaVehicularBean implements Serializable{
 		this.setPolicia(new Personalpolicial());
 		this.setDependencia(new Dependencia());
 		this.setTipoVehiculo(new Tipovehiculo());
-		FacesContextUtil.inicializarVista();
 	}
 	
 	public void inicializaUpdate(){

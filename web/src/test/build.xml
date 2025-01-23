@@ -1,7 +1,7 @@
 <project name = "java-ant project" default = "copy-file">  
      
 	<target name="copy-file"> 
-    	<copy todir="/opt/wildfly-18.0.0.AdminPoliciaLoja/standalone/tmp/vfs/deployment/deployment7aa4ba40f88325f6/AdminPoliciaLoja-web.war-3a0fef537389279/">
+    	<copy todir="/opt/wildfly-18.0.0.AdminPoliciaLoja/standalone/tmp/vfs/deployment/deployment90beed72066b14d/AdminPoliciaLoja-web.war-b4a26f77a5cf8927/">
         	<fileset dir="../main/webapp/"/>
         </copy>  
     </target>  

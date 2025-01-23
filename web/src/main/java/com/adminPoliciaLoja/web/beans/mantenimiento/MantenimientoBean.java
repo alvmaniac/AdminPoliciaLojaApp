@@ -54,7 +54,6 @@ public class MantenimientoBean implements Serializable{
 		this.setMantenimiento(new Mantenimiento());
 		this.setIsUpdate(false);
 		this.setFlota(new Flotavehicular());
-		FacesContextUtil.inicializarVista();
 	}
 	
 	public void inicializaUpdate(){

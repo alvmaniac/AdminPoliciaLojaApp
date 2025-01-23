@@ -99,7 +99,7 @@ public abstract class GenericJpaImp< T extends Serializable > implements Generic
 	   }
 	   public void delete( T entity ) throws AdminPoliciaLojaException{
 		   try {
-		   		em.remove( entity );
+		   		em.remove(em.contains(entity) ? entity : em.merge(entity));
 		   }catch (EJBException e) {
 				throw new AdminPoliciaLojaException(VariablesStatic.EXCEPTION_SYSTEM +"_4_" +clazz.getSimpleName().toUpperCase(),e.getMessage());
 			}catch (Exception e) {

@@ -48,7 +48,6 @@ public class ReclamoSugerenciaBean implements Serializable{
 		this.setCircuito("");
 		this.setReclamoSuger(new ReclamoSugerencia());
 		this.setSubcircuito(new Dependencia());
-		FacesContextUtil.inicializarVista();
 	}
 	
 	/**

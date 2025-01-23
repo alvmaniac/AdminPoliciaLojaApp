@@ -53,7 +53,10 @@
 	            </h:panelGrid>
 	           	<p:commandButton value="Guardar" styleClass="buttonNormal" disabled="#{usuarioBean.isUpdate}"  action="#{usuarioBean.ingresa}" update=":formCli"/>
 	           	<p:commandButton value="Modificar" styleClass="buttonNormal" disabled="#{!usuarioBean.isUpdate}" action="#{usuarioBean.modificar}" update=":formCli"/>
-	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{usuarioBean.inicializa}" immediate="true" update=":formCli"/>
+	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{usuarioBean.inicializa}" immediate="true" update=":formCli" >
+	           	  <p:resetInput target="pgClient"/>
+	           	 </p:commandButton>
+	           	  
 			</h:form>
 		</p:panel>
 	</ui:define>

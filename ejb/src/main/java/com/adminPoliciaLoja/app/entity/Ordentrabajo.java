@@ -12,7 +12,10 @@ import java.util.Objects;
  * 
  */
 @Entity
-@NamedQuery(name="Ordentrabajo.findAll", query="SELECT o FROM Ordentrabajo o")
+
+@NamedQueries({
+	@NamedQuery(name="Ordentrabajo.findAll", query="SELECT o FROM Ordentrabajo o"),
+	@NamedQuery(name="Ordentrabajo.findByMantenimiento", query="select o from Ordentrabajo o where o.mantenimiento.id =?1")})
 public class Ordentrabajo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -47,7 +50,7 @@ public class Ordentrabajo implements Serializable {
 	private BigDecimal valortotal;
 
 	private BigDecimal valorunitario;
-
+	
 	//bi-directional many-to-one association to Mantenimiento
 	@ManyToOne
 	@JoinColumn(name="MantenimientoID")
@@ -60,6 +63,23 @@ public class Ordentrabajo implements Serializable {
 
 	public Ordentrabajo() {
 	}
+	
+
+	public Ordentrabajo(int cantidad, BigDecimal impuesto, BigDecimal porcentaje,
+			BigDecimal valortotal, BigDecimal valorunitario, Mantenimiento mantenimiento,
+			Serviciosrepuesto serviciosrepuesto, String usercreacion, Date fechacreacion) {
+		this.cantidad = cantidad;
+		this.impuesto = impuesto;
+		this.porcentaje = porcentaje;
+		this.valortotal = valortotal;
+		this.valorunitario = valorunitario;
+		this.mantenimiento = mantenimiento;
+		this.serviciosrepuesto = serviciosrepuesto;
+		this.usercreacion=usercreacion;
+		this.fechacreacion=fechacreacion;
+	}
+
+
 
 	public int getId() {
 		return this.id;

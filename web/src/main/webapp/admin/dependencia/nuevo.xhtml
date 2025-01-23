@@ -73,7 +73,9 @@
 	            </h:panelGrid>
 	           	<p:commandButton value="Guardar" styleClass="buttonNormal" disabled="#{dependenciaBean.isUpdate}"  action="#{dependenciaBean.ingresa}" update=":formCli"/>
 	           	<p:commandButton value="Modificar" styleClass="buttonNormal" disabled="#{!dependenciaBean.isUpdate}" action="#{dependenciaBean.modificar}" update=":formCli"/>
-	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{dependenciaBean.inicializa}" immediate="true" update=":formCli"/>
+	           	<p:commandButton value="Limpiar" styleClass="buttonNormal" action="#{dependenciaBean.inicializa}" immediate="true" update=":formCli">
+	           	  <p:resetInput target="pgClient"/>
+	           	 </p:commandButton>
 			</h:form>
 		</p:panel>
 	</ui:define>

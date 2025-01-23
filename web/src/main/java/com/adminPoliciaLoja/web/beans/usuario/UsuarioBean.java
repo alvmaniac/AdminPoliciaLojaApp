@@ -62,7 +62,6 @@ public class UsuarioBean implements Serializable{
 		this.setIsUpdate(false);
 		this.setRol(new Rol());
 		this.setPerPoli(new Personalpolicial());
-		FacesContextUtil.inicializarVista();
 	}
 	
 	public void inicializaUpdate(){

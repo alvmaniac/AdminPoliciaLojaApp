@@ -68,6 +68,11 @@ public class MantenimientoListBean implements Serializable{
 		return "/admin/mantenimiento/nuevo";
 	}
 	
+	public String cargaDatosCreaOrdenTrabajo(){
+		FacesContextUtil.setObjetoSession("MANTENIMIENTO", this.mantenimiento);
+		return "/admin/mantenimiento/creaOrdenTrabajo";
+	}
+	
 	public String getIsActive() {
 		return isActive;
 	}

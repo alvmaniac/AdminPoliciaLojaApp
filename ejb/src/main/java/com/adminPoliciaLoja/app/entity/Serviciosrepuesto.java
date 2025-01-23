@@ -14,7 +14,9 @@ import java.util.Objects;
  */
 @Entity
 @Table(name="Serviciosrepuestos")
-@NamedQuery(name="Serviciosrepuesto.findAll", query="SELECT s FROM Serviciosrepuesto s")
+@NamedQueries({
+	@NamedQuery(name="Serviciosrepuesto.findAll", query="SELECT s FROM Serviciosrepuesto s"),
+	@NamedQuery(name="Serviciosrepuesto.findProXNom", query="select o from Serviciosrepuesto o where o.nombre =?1")})
 public class Serviciosrepuesto implements Serializable {
 	private static final long serialVersionUID = 1L;
 

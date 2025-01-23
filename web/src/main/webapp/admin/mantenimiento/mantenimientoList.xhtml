@@ -27,6 +27,9 @@
 					        	<f:setPropertyActionListener value="#{o}" target="#{mantenimientoListBean.mantenimiento}" />
 					        	<f:param name="activ" value="INACTIVO"/>	
 					        </p:menuitem>
+					        <p:menuitem value="Orden de Trabajo" icon="ui-icon-check" immediate="true"  action="#{mantenimientoListBean.cargaDatosCreaOrdenTrabajo}" process="@this">
+					        	<f:setPropertyActionListener value="#{o}" target="#{mantenimientoListBean.mantenimiento}" />
+					        </p:menuitem>
 					    </p:menuButton>
 					</p:column>
 					<p:column headerText="Id">

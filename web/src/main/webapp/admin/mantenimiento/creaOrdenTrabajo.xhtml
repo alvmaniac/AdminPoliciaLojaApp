@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+		<p:panel>			
+			<h:form id="form">
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-12 ui-g-nopad">
+						<p:spacer height="5" />
+						<p:panelGrid columns="2" style="width:100%" id="pgridF">
+							<f:facet name="header">
+									<p:outputLabel value="ORDEN DE TRABAJO" styleClass="etiqueta2"/>
+							</f:facet>
+							
+						  	<h:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" id="pgridE">
+		           	
+					           	<p:outputLabel for="itVehi" value="Vehículo: " styleClass="etiqueta"/>
+								<p:outputLabel id="itVehi" value="#{ordenTrabajoBean.mantenimiento.flotavehicular.placa}" styleClass="campo" />
+								
+								<p:outputLabel for="itFCita" value="Fecha Cita: " styleClass="etiqueta"/>
+								<p:outputLabel id="itFCita" value="#{ordenTrabajoBean.mantenimiento.fechacita}" styleClass="campo"/>
+								
+								<p:outputLabel for="itKCita" value="Kilom. Cita: " styleClass="etiqueta"/>
+								<p:outputLabel id="itKCita" value="#{ordenTrabajoBean.mantenimiento.kilometrajecita}" styleClass="campo"/>
+									
+								<p:outputLabel for="itFRecep" value="Fecha Recepción: " styleClass="etiqueta"/>
+								<p:calendar id="itFRecep" value="#{ordenTrabajoBean.mantenimiento.fecharecepcion}" showOn="button" 
+									pattern="yyyy-MM-dd HH:mm" timeInput="true"/>
+									
+								<p:outputLabel for="itFEnt" value="Fecha Entrega: " styleClass="etiqueta"/>
+								<p:calendar id="itFEnt" value="#{ordenTrabajoBean.mantenimiento.fechaentrega}" showOn="button" 
+									 pattern="yyyy-MM-dd HH:mm" timeInput="true"/>
+									 
+								<p:outputLabel for="itKRec" value="Kilom. Recep.: " styleClass="etiqueta"/>
+								<p:inputNumber id="itKRec" value="#{ordenTrabajoBean.mantenimiento.kilometrajerecepcion}" 
+									 styleClass="campo" maxlength="11" minValue="1" decimalPlaces="0"/>
+								
+								<p:outputLabel for="itKEnt" value="Kilom. Entrega: " styleClass="etiqueta"/>
+								<p:inputNumber id="itKEnt" value="#{ordenTrabajoBean.mantenimiento.kilometrajeentrega}" 
+									 styleClass="campo" maxlength="11" minValue="1" decimalPlaces="0"/>
+								
+								<p:outputLabel for="itKPCita" value="Kilom. Prox. Cita: " styleClass="etiqueta"/>
+								<p:inputNumber id="itKPCita" value="#{ordenTrabajoBean.mantenimiento.kilometrajeproximarevicion}" 
+									 styleClass="campo" maxlength="11" minValue="1" decimalPlaces="0"/>
+									 
+								<p:outputLabel for="itTEst" value="Tiempo Estimado: " styleClass="etiqueta"/>
+								<p:calendar id="itTEst" value="#{ordenTrabajoBean.mantenimiento.tiempoestimado}" showOn="button" 
+									 pattern="HH:mm" timeInput="true" timeOnly="true"/>
+								
+								<p:outputLabel for="itTreal" value="Tiempo Real: " styleClass="etiqueta"/>
+								<p:calendar id="itTreal" value="#{ordenTrabajoBean.mantenimiento.tiemporeal}" showOn="button" 
+									 pattern="HH:mm" timeInput="true" timeOnly="true"/>
+								
+								<p:outputLabel for="itORec" value="Obser. Recepción: " styleClass="etiqueta"/>
+								<p:inputTextarea id="itORec" value="#{ordenTrabajoBean.mantenimiento.observacionrecepcion}" 
+									 styleClass="campo" maxlength="200" minValue="1" decimalPlaces="0"/>
+								
+								<p:outputLabel for="itOEnt" value="Obser. Entrega: " styleClass="etiqueta"/>
+								<p:inputTextarea id="itOEnt" value="#{ordenTrabajoBean.mantenimiento.observacionentrega}" 
+									 styleClass="campo" maxlength="200" minValue="1" decimalPlaces="0"/>
+								<p:outputLabel for="itEman" value="Estado Mante.: " styleClass="etiqueta"/>
+								
+								<p:selectOneMenu id="itEman" value="#{ordenTrabajoBean.mantenimiento.estadomantenimiento}"
+									required="true" styleClass="campo" maxlength="15">
+				                    <f:selectItem itemLabel="Seleccione.." itemValue="#{null}" noSelectionOption="true"/>
+				                    <f:selectItem itemLabel="CITA" itemValue="CITA" />
+				                    <f:selectItem itemLabel="RECEPCION" itemValue="RECEPCION" />
+				                    <f:selectItem itemLabel="TERMINADO" itemValue="TERMINADO" />
+				                    <f:selectItem itemLabel="FACTURADO" itemValue="FACTURADO" />
+				                </p:selectOneMenu>	
+				            </h:panelGrid>
+						</p:panelGrid>
+						<h:panelGrid id="msgs">
+							<p:messages globalOnly="true"/>
+						</h:panelGrid>
+						<h:panelGrid id="panelTabla">
+							<p:remoteCommand name="rcT" update=":form:cars2 :form:divTotales" />
+						    <p:dataTable id="cars2" var="o" value="#{ordenTrabajoBean.detL}" editable="true" editMode="cell" widgetVar="cellCars" reflow="true" rowIndexVar="rk">
+						        <p:ajax event="cellEdit" listener="#{ordenTrabajoBean.onCellEdit}" update=":form:msgs form:buttPagar"/>
+						         <p:column headerText="" styleClass="columnDelete">
+						                 <p:commandLink styleClass="ui-priority-primary" process="@this" update=":form:msgs :form:divTotales :form:cars2 form:buttPagar" action="#{ordenTrabajoBean.borrafacturaAction(rk)}" >
+						                 	<h:graphicImage library="imagenes" name="eliminar.gif" styleClass="linkImagenes" />
+						                 </p:commandLink>
+						        </p:column>
+						        <p:column headerText="COD" styleClass="columnCod">
+					               <p:cellEditor>
+					                   <f:facet name="output"><h:outputText id="Cell1" value="#{o.serviciosrepuesto.id}" /></f:facet>
+					                   <f:facet name="input">
+						                   <p:selectOneMenu id="advanced" value="#{o.serviciosrepuesto.id}" panelStyle="width:180px"
+									                         effect="fade"  style="width:160px" filter="true" filterMatchMode="startsWith">
+									            <f:selectItem itemLabel="Seleccione.." itemValue="0" noSelectionOption="true" />
+									            <f:selectItems value="#{ordenTrabajoBean.proL}" var="p" itemLabel="#{p.id} - #{p.nombre}" itemValue="#{p.id}" />
+									        </p:selectOneMenu>
+					                   </f:facet>
+					               </p:cellEditor>
+					            </p:column>
+					 
+					            <p:column headerText="NOMBRE" styleClass="columnProd">
+						            <p:cellEditor>
+						                <f:facet name="output"><h:outputText id="Cell2" value="#{o.serviciosrepuesto.nombre}" /></f:facet>
+						                <f:facet name="input">
+						                	<p:selectOneMenu id="advanced2" value="#{o.serviciosrepuesto.nombre}" panelStyle="width:180px"
+									                         effect="fade"  style="width:160px" filter="true" filterMatchMode="contains">
+									            <f:selectItem itemLabel="Seleccione.." itemValue=" " noSelectionOption="true" />
+									            <f:selectItems value="#{ordenTrabajoBean.proL}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.nombre}" />
+									        </p:selectOneMenu>
+						                </f:facet>
+						            </p:cellEditor>
+						        </p:column>
+						 
+						        <p:column headerText="CANT" id="Cell3" styleClass="columnCant">
+						            <p:cellEditor>
+						                <f:facet name="output"><h:outputText value="#{o.cantidad}" /></f:facet>
+						                <f:facet name="input">
+						                    <f:facet name="input"><p:inputText value="#{o.cantidad}" label="Cantidad"/></f:facet>
+						                </f:facet>
+						            </p:cellEditor>
+						        </p:column>
+						 
+						         <p:column headerText="PRECIO U." styleClass="columnPrecioU">
+						                <h:outputText value="#{o.valorunitario}" />
+						        </p:column>
+						        
+						         <p:column headerText="PRECIO" styleClass="columnPrecioU">
+						                <h:outputText value="#{o.valortotal}" />
+						        </p:column>
+						    </p:dataTable>
+						    
+						    <div jsf:id="divTotales" align="right">
+							    <table id="tablaTotales" >
+						    		<tr>
+								    	<td width="50%"><h:outputText value="SUBTOTAL" /></td>
+								    	<td width="50%"><h:outputText value="#{ordenTrabajoBean.subTotal}" /></td>
+								  	</tr>
+								  	<ui:repeat  var="t" value="#{ordenTrabajoBean.facTotL}" varStatus="estado">
+									  	<tr>
+										    <td width="50%"><h:outputText value="#{t.clave}" /></td>
+										    <td width="50%"><h:outputText value="#{t.valor}" /></td>
+									  	</tr>
+								  	</ui:repeat>
+								 	<tr>
+								    	<td width="50%"><h:outputText value="TOTAL" /></td>
+								     	<td width="50%"><h:outputText value="#{ordenTrabajoBean.total}" /></td>
+								  </tr>
+								</table>
+							</div>
+							<p:spacer height="5" />
+					     	<div jsf:id="buttPagar" style="text-align: center;">
+					     		<p:commandButton value="NUEVA FILA" process="@this" update=":form:msgs" action="#{ordenTrabajoBean.onAddNew()}" oncomplete="PF('cellCars').addRow();" immediate="true" styleClass="buttonNormal"/>
+						        <p:commandButton value="GUARDAR" action="#{ordenTrabajoBean.facturar}" update=":form:msgs :form:pgridE :form:panelTabla :form:pgP" oncomplete="PF('dlg1').show()" styleClass="buttonNormal"/>
+					     	</div>
+				     	
+					     	<h:panelGrid >
+								<p:dialog header="CONFIRMACIÓN" widgetVar="dlg1" width="600" height="70" modal="true" position="center center" onShow="PF('dlg1').initPosition()" responsive="true" >
+									<h:panelGrid id="pgP">
+										 <p:outputLabel value="Orden de Trabajo creada correctamente" styleClass="etiqueta"/>
+									     <f:facet name="footer" style="text-align:center">
+									    	<p:commandButton styleClass="buttonNormal" value="Aceptar"  update=":form" oncomplete="PF('dlg1').hide()"/>
+											<p:commandButton styleClass="buttonNormal" value="Cancelar"  oncomplete="PF('dlg1').hide()" />
+									    </f:facet>
+									</h:panelGrid>
+								</p:dialog>
+							</h:panelGrid>
+					     	
+						</h:panelGrid> 
+					</div>
+				</div>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>
