@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+		<p:panel>			
+			<h:form id="formUsu">
+				<h:outputText value="REGISTROS ENTRADA Y SALIDA" styleClass="etiqueta2"/>
+				<p:spacer height="10" />
+				<p:dataTable id="tabla" value="#{registroEntradaSalidaListBean.registros}" var="o" rows="15" widgetVar="usuTable" paginator="true" reflow="true" style="margin-top:10px">
+           			<p:column headerText="Acción" exportable="false">
+						<p:menuButton value="Options">
+					        <p:menuitem value="Modificar"  icon="ui-icon-pencil" immediate="true" action="#{registroEntradaSalidaListBean.cargaDatos}" process="@this" >
+					        	<f:setPropertyActionListener value="#{o}" target="#{registroEntradaSalidaBean.reg}" />	
+					        </p:menuitem>
+					    </p:menuButton>
+					</p:column>
+					<p:column headerText="Id">
+						<h:outputText value="#{o.id}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Fecha" >
+						<h:outputText value="#{o.fecha}" styleClass="texto"  />
+					</p:column>
+					<p:column headerText="Cod." filterBy="#{o.personalpolicial.codpolicial}">
+						<h:outputText value="#{o.personalpolicial.codpolicial}" styleClass="texto"  />
+					</p:column>	
+					<p:column headerText="Nombre" filterBy="#{o.personalpolicial.nombreapellido}">
+						<h:outputText value="#{o.personalpolicial.nombreapellido}" styleClass="texto"  />
+					</p:column>					
+				</p:dataTable>
+				
+				<p:panelGrid>
+					 <p:row>
+                        <p:column>
+                        	<p:commandButton ajax="false" icon="fa fa-file-excel-o" value="XLSX">
+					             <p:dataExporter type="xlsxstream" target="tabla" fileName="Registros"/>
+					        </p:commandButton>
+                        </p:column>
+                        <p:column>
+                        	<p:commandButton ajax="false" icon="fa fa-file-pdf-o" value="PDF">
+				            	<p:dataExporter type="pdf" target="tabla" fileName="Registros"/>
+				        	</p:commandButton>
+                        </p:column>
+                     </p:row>
+				</p:panelGrid>
+				
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

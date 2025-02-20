@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<ui:define name="body">
+
+		<p:panel>
+			<h:form id="formCli">
+			 	<h:outputText value="MODIFICAR REGISTRO" styleClass="etiqueta2"/>
+			 	<p:spacer height="10" />
+			 	<p:messages>
+			        <p:autoUpdate />
+			    </p:messages>
+		        <h:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" id="pgClient">
+		           					
+					<p:outputLabel for="itCDist" value="Cod. Distritos: " styleClass="etiqueta"/>
+					<p:outputText id="itCDist" value="#{registroEntradaSalidaBean.reg.personalpolicial.codpolicial}"
+						 styleClass="campo" />
+						 
+						 <p:outputLabel for="itCDist2" value="Cod. Distritos: " styleClass="etiqueta"/>
+					<p:outputText id="itCDist2" value="#{registroEntradaSalidaBean.reg.personalpolicial.nombreapellido}"
+						 styleClass="campo" />
+					
+					<p:outputLabel for="itFCita" value="Fecha y Hora: " styleClass="etiqueta"/>
+					<p:calendar id="itFCita" value="#{registroEntradaSalidaBean.reg.fecha}" showOn="button" 
+						required="true" pattern="yyyy-MM-dd HH:mm" timeInput="true"/>
+					
+	            </h:panelGrid>
+	           	
+	           	<p:commandButton value="Modificar" styleClass="buttonNormal" disabled="#{!registroEntradaSalidaBean.isUpdate}" action="#{registroEntradaSalidaBean.modificar}" update=":formCli"/>
+	           
+	           	  <p:resetInput target="pgClient"/>
+	           	 </p:commandButton>
+	           	  
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>

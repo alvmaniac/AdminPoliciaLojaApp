@@ -22,8 +22,15 @@
 			<p:menuitem value="Mantenimientos" outcome="/admin/mantenimiento/mantenimientoList" />
 			<p:menuitem value="Nuevo" outcome="/admin/mantenimiento/nuevo"/>
 		</p:submenu>
+		
+		
 		<p:submenu label="Reportes" rendered="#{request.isUserInRole('ADMINISTRADOR') || request.isUserInRole('ALTA_GERENCIA')}">
 			<p:menuitem value="Próximos mantenimeintos" outcome="/admin/reportes/proximoMantenimiento" />
 			<p:menuitem value="Reclamos y Sugerencias" outcome="/admin/reportes/reclamoSugerencia" />
+		</p:submenu>
+		
+		<p:submenu label="Gestiòn Entrada Salida Policial">
+			<p:menuitem value="Registros Entrada Salida" outcome="/admin/registroEntradaSalida/registroEntradaSalidaList" rendered="#{request.isUserInRole('ADMINISTRADOR')}"/>
+			<p:menuitem value="Registro" outcome="/admin/registroEntradaSalida/registroEntradaSalidaPolicia" />
 		</p:submenu>
 </ui:composition>
